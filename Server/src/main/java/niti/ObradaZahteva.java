@@ -21,17 +21,46 @@ import transfer_operacije.StatusOdgovora;
 import transfer_operacije.Operacije_radna_memorija;
 
 /**
+ * Klasa predstavlja serversku nit koja obradjuje zahteve klijenta.
  *
- * @author PC
+ * ObradaZahteva je klasa koja nasledjuje Thread i predstavlja serversku nit
+ * koja se pokrece za svakog klijenta koji se poveze sa serverom. Svaka instanca
+ * ove klase ima svoj socket preko kojeg komunicira sa klijentom.
+ *
+ * Nit u petlji ceka na pristizanje zahteva od klijenta, obradjuje ih koristeci
+ * odgovarajuce metode iz Kontrolera i salje odgovor klijentu.
+ *
+ * @see KontrolerBaza
+ * @see Socket
+ * @see KlijentskiZahtev
+ * @see ServerskiOdgovor
+ * @see Thread
+ *
+ * @author Irena Zivkovic
  */
 public class ObradaZahteva extends Thread {
 
+    /**
+     * Socket koji se koristi za komunikaciju sa klijentom.
+     */
     private Socket socket;
 
+    /**
+     * Konstruktor klase KlijentskaNit.
+     *
+     * @param socket Socket preko kojeg se komunicira sa klijentom
+     */
     ObradaZahteva(Socket socket) {
         this.socket = socket;
     }
 
+    /**
+     * Metoda prima zahtev od klijenta preko ObjectInputStream-a, cita ga i
+     * vraca kao objekat klase Zahtev.
+     *
+     * Zatim metoda salje odgovor klijentu preko ObjectOutputStream-a.
+     *
+     */
     @Override
     public void run() {
         try {
@@ -47,6 +76,15 @@ public class ObradaZahteva extends Thread {
         }
     }
 
+    /**
+     * Metoda koja se izvrsava prilikom pokretanja niti.
+     *
+     * Metoda ceka na pristizanje zahteva od klijenta, obraduje ih koristeci
+     * odgovarajuce metode iz Kontrolera i salje odgovor klijentu.
+     *
+     * @param req Zahtev koji je klijent poslao
+     * @return serverski odgovor sistema.
+     */
     private ServerskiOdgovor handleRequest(KlijentskiZahtev req) {
         ServerskiOdgovor res = new ServerskiOdgovor(null, null, StatusOdgovora.Success);
 

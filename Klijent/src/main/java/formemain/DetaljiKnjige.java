@@ -12,11 +12,15 @@ import javax.swing.JOptionPane;
 import klijentkontroler.KlijentKontroler;
 
 /**
+ * Forma prikazuje detalje o izabranoj knjizi
  *
- * @author Irena
+ * @author Irena Zivkovic
  */
 public class DetaljiKnjige extends javax.swing.JDialog {
 
+    /**
+     * Inicijalizacija knjige
+     */
     Knjiga k;
 
     /**
@@ -194,6 +198,9 @@ public class DetaljiKnjige extends javax.swing.JDialog {
     private javax.swing.JFormattedTextField txtStanje;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * Metoda za sredjivanje forme
+     */
     private void srediFormu() {
         txtCena.setText(k.getCena() + "");
         txtNaslov.setText(k.getNaslov());

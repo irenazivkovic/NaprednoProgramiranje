@@ -13,15 +13,29 @@ import java.util.logging.Logger;
 import javax.swing.table.AbstractTableModel;
 
 /**
+ * Model tabele za prikaz knjiga. Klasa nasledjuje apstraktnu klasu
+ * AbstractTableModel i implementira njene apstraktne metode.
  *
- * @author PC
+ * @author Irena Zivkovic
  */
 public class ModelTabeleKnjige extends AbstractTableModel {
 
+    /**
+     * lista knjiga
+     */
     private ArrayList<Knjiga> lista;
+    /**
+     * Naziv kolona tabele kao String
+     */
     private String[] kolone = {"Naslov", "Pisac", "Trenutno raspolozivo stanje", "Cena"};
+    /**
+     * Parametar kao String
+     */
     private String parametar = "";
 
+    /**
+     * Konstruktor koji inicijalizuje model tabele knjiga.
+     */
     public ModelTabeleKnjige() {
         try {
             lista = KlijentKontroler.getInstance().getAllKnjiga();
@@ -47,7 +61,7 @@ public class ModelTabeleKnjige extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int row, int column) {
-        Knjiga k = lista.get(row); 
+        Knjiga k = lista.get(row);
 
         switch (column) {
             case 0:
@@ -63,15 +77,29 @@ public class ModelTabeleKnjige extends AbstractTableModel {
         }
     }
 
+    /**
+     * Metoda koja vraca knjigu datog indexa.
+     *
+     * @param row Indeks knjige.
+     * @return Knjiga sa datog indexa
+     */
     public Knjiga getSelectedKnjiga(int row) {
         return lista.get(row);
     }
 
+    /**
+     * Postavlja parametar.
+     *
+     * @param parametar Nova vrednost parametra koji se postavlja.
+     */
     public void setParametar(String parametar) {
         this.parametar = parametar;
         refreshTable();
     }
 
+    /**
+     * Metoda koja sluzi za osvezavanje tabele
+     */
     public void refreshTable() {
         try {
             lista = KlijentKontroler.getInstance().getAllKnjiga();

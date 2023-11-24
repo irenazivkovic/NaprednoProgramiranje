@@ -9,12 +9,13 @@ import javax.swing.JOptionPane;
 import modeliklijent.ModelTabeleKupci;
 
 /**
- *
- * @author Irena
+ * Forma za pretragu kupaca
+ * @author Irena Zivkovic
  */
 public class PretragaKupaca extends javax.swing.JDialog {
 
     /**
+     * Parametrizovan konstruktor klase PretragaKupaca
      * Creates new form PretragaKupaca
      */
     public PretragaKupaca(java.awt.Frame parent, boolean modal) {
@@ -122,6 +123,11 @@ public class PretragaKupaca extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Metoda koja pretrazuje kupca prema unetom parametru
+     * 
+     * @param evt  Objekat koji predstavlja dogadjaj klika na dugme.
+     */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
        if(txtParametar.getText().isEmpty()){
            JOptionPane.showMessageDialog(this,"Unesite parametar za pretragu!");
@@ -134,12 +140,22 @@ public class PretragaKupaca extends javax.swing.JDialog {
        txtParametar.setText(null);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    /**
+     * Metoda koja veaca sve kupce iz baze i postavlja ih u tabelu
+     * 
+     * @param evt  Objekat koji predstavlja dogadjaj klika na dugme.
+     */
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
        txtParametar.setText(null);
        tblKupci.setModel(new ModelTabeleKupci());
        jButton3.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    /**
+     * Metoda koja poziva formu o detaljima kupca za izabranu kupca
+     * 
+     * @param evt  Objekat koji predstavlja dogadjaj klika na dugme.
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
       int row=tblKupci.getSelectedRow();
       if(row>=0){
@@ -204,6 +220,9 @@ public class PretragaKupaca extends javax.swing.JDialog {
     private javax.swing.JTextField txtParametar;
     // End of variables declaration//GEN-END:variables
 
+     /**
+     * Metoda za osvezavanje tabele
+     */
     void refreshTable() {
         ModelTabeleKupci mt=(ModelTabeleKupci) tblKupci.getModel();
         mt.refreshTable();

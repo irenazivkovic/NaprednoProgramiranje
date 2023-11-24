@@ -5,19 +5,28 @@
  */
 package form;
 
-
 import java.sql.Connection;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import niti.KontrolerBaza;
 
 /**
+ * Klasa koja predstavlja serversku formu.
  *
- * @author PC
+ * @author Irena Zivkovic
  */
 public class ServerskaForma extends javax.swing.JFrame {
+
+    /**
+     * instanca klase preko koje ce se izvrsiti konekcija
+     */
     Connection connection;
 
+    /**
+     * Uspostavljanje konkcije
+     *
+     * @param connection konekcija sa kojom se povezuje
+     */
     public void setConnection(Connection connection) {
         this.connection = connection;
     }
@@ -27,6 +36,9 @@ public class ServerskaForma extends javax.swing.JFrame {
      */
     private KontrolerBaza threadServer;
 
+    /**
+     * Konstruktor klase Serverska forma
+     */
     public ServerskaForma() {
         setLocationRelativeTo(null);
         initComponents();
@@ -35,8 +47,7 @@ public class ServerskaForma extends javax.swing.JFrame {
         btnUgasiServer.setEnabled(false);
         setTitle("Serverska forma");
         setLocationRelativeTo(null);
-        
-       
+
     }
 
     /**
@@ -112,6 +123,13 @@ public class ServerskaForma extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Metoda koja se poziva prilikom klika na dugme "Pokreni server". Ako je
+     * server vec pokrenut, prikazuje se odgovarajuca poruka. Inace, kreira se
+     * nova instanca KontrolerBaza() i pokrece se.
+     *
+     * @param evt dogadjaj klika na dugme
+     */
     private void btnPokreniServerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPokreniServerActionPerformed
         threadServer = new KontrolerBaza();
         threadServer.start();
@@ -121,6 +139,12 @@ public class ServerskaForma extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnPokreniServerActionPerformed
 
+    /**
+     * Metoda koja se poziva prilikom klika na dugme "Ugasi server". Ako je
+     * server pokrenut, zaustavlja se. Inace, prikazuje se odgovarajuÄca poruka.
+     *
+     * @param evt dogadjaj klika na dugme
+     */
     private void btnUgasiServerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUgasiServerActionPerformed
 
         threadServer.interrupt();
@@ -129,9 +153,6 @@ public class ServerskaForma extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_btnUgasiServerActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnPokreniServer;
@@ -140,5 +161,4 @@ public class ServerskaForma extends javax.swing.JFrame {
     private java.awt.Panel panel1;
     // End of variables declaration//GEN-END:variables
 
-   
 }

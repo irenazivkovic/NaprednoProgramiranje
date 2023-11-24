@@ -11,13 +11,22 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
+ * Sistemska operacija koja dodaje kupca
  *
- * @author Irena
+ * @author Irena Zivkovic
  */
 public class SOAddKupac extends ApstraktnaSO {
 
+    /**
+     * boolean vrednost za uspesno koji je postavljen na pocetku na false
+     */
     private boolean uspesno = false;
 
+    /**
+     * Metoda pokazuje da li operacija uspesna.
+     *
+     * @return true ako je uspesna operacija, ili false ukoliko nije
+     */
     public boolean isUspesno() {
         return uspesno;
     }

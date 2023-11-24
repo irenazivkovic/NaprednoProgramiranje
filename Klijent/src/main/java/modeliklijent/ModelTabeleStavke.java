@@ -14,15 +14,29 @@ import java.util.logging.Logger;
 import javax.swing.table.AbstractTableModel;
 
 /**
+ * Model tabele za prikaz stavki narudzbenice. Klasa nasledjuje apstraktnu klasu
+ * AbstractTableModel i implementira njene apstraktne metode.
  *
- * @author PC
+ * @author Irena Zivkovic
  */
 public class ModelTabeleStavke extends AbstractTableModel {
 
+    /**
+     * lista stavki narudzbenice
+     */
     private ArrayList<Stavka> lista;
+    /**
+     * Naziv kolona tabele kao String
+     */
     private String[] kolone = {"Redni broj", "Naziv knjige", "Cena", "Kolicina", "PDV"};
+    /**
+     * Redni broj stavke.
+     */
     int rb = 1;
 
+    /**
+     * Konstruktor koji inicijalizuje model tabele stavke.
+     */
     public ModelTabeleStavke() {
         try {
             lista = new ArrayList<>();
@@ -31,10 +45,18 @@ public class ModelTabeleStavke extends AbstractTableModel {
         }
     }
 
+    /**
+     * Parametrizovani konstruktor koji inicijalizuje model tabele stavke.
+     * @param lista Lista stavki
+     */
     public ModelTabeleStavke(ArrayList<Stavka> lista) {
         this.lista = lista;
     }
 
+    /**
+     * Metoda koja vraca listu stavki.
+     * @return Lista stavki.
+     */
     public ArrayList<Stavka> getLista() {
         return lista;
     }
@@ -74,6 +96,11 @@ public class ModelTabeleStavke extends AbstractTableModel {
         }
     }
 
+    /**
+     * Metoda koja proverava da li postoji vec stavka u tabeli.
+     * @param s Nova stavka koja se unosi.
+     * @return Odgovor servera.
+     */
     public boolean postoji(Stavka s) {
         for (Stavka stavka : lista) {
             if (stavka.getKnjiga().getKnjigaID() == s.getKnjiga().getKnjigaID()) {
@@ -83,12 +110,20 @@ public class ModelTabeleStavke extends AbstractTableModel {
         return false;
     }
 
+    /**
+     * Dodavanje stavke
+     * @param s Nova stavka koja se dodaje u tabelu.
+     */
     public void dodaj(Stavka s) {
         s.setRedniBroj(rb++);
         lista.add(s);
         fireTableDataChanged();
     }
 
+    /**
+     * Izracunavanje ukupne cene
+     * @return Vraca ukupnu cenu stavki.
+     */
     public double vratiUkupnuCenu() {
         double ukupnaCena = 0;
         for (Stavka stavka : lista) {
@@ -97,9 +132,13 @@ public class ModelTabeleStavke extends AbstractTableModel {
         return ukupnaCena;
     }
 
+    /**
+     * Brise stavku iz tabele.
+     * @param row Indeks stavke koji se brise.
+     */
     public void obrisi(int row) {
         lista.remove(row);
-        rb=1;
+        rb = 1;
         for (Stavka stavka : lista) {
             stavka.setRedniBroj(rb++);
         }

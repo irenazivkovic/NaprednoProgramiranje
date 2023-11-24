@@ -6,9 +6,13 @@
 package transfer_operacije;
 
 /**
+ * Enumeracija koja predstavlja status odgovora u sistemu E-Knjizara.
  *
- * @author PC
+ * @author Irena Zivkovic
  */
 public enum StatusOdgovora {
+    /**
+     * Status odgovora
+     */
     Success, Error
 }

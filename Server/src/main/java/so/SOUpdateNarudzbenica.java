@@ -10,13 +10,22 @@ import domenskeKlase.Narudzbenica;
 import java.sql.SQLException;
 
 /**
+ * Sistemska operacija koja vrsi izmenu narudzbenice
  *
- * @author Irena
+ * @author Irena Zivkovic
  */
 public class SOUpdateNarudzbenica extends ApstraktnaSO {
 
+    /**
+     * boolean vrednost za uspesno koji je postavljen na pocetku na false
+     */
     private boolean uspesno = false;
 
+    /**
+     * Metoda pokazuje da li operacija uspesna.
+     *
+     * @return true ako je uspesna operacija, ili false ukoliko nije
+     */
     public boolean isUspesno() {
         return uspesno;
     }

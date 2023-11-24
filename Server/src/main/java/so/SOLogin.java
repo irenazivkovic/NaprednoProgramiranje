@@ -11,13 +11,22 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
+ * Sistemska operacija koja vraca ulogovanog administratora
  *
- * @author Irena
+ * @author Irena Zivkovic
  */
 public class SOLogin extends ApstraktnaSO {
 
+    /**
+     * Inicijalizacija objekta klase Administrator
+     */
     private Administrator a;
 
+    /**
+     * Metoda vraca administratora sistema
+     *
+     * @return administrator koji je prijavljen na sistem
+     */
     public Administrator getA() {
         return a;
     }

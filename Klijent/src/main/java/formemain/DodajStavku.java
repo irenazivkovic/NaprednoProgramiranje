@@ -13,8 +13,9 @@ import javax.swing.JOptionPane;
 import klijentkontroler.KlijentKontroler;
 
 /**
- *
- * @author Irena
+ * Forma za dodavanje stavke narudzbenice
+ * 
+ * @author Irena Zivkovic
  */
 public class DodajStavku extends javax.swing.JDialog {
 
@@ -128,6 +129,12 @@ public class DodajStavku extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Metoda koja suzi za dodavanje stavke. 
+     * Getuje sve parametre sa forme i kreira objekat klase Stavka koji prosledjuje klijentskoj formi.
+     * 
+     * @param evt  Objekat koji predstavlja dogadjaj klika na dugme.
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         if (txtKolicina.getText().isEmpty()) {
@@ -156,6 +163,11 @@ public class DodajStavku extends javax.swing.JDialog {
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    /**
+     * Metoda koja postavlja knjigu na izabranu knjigu iz comboboxa.
+     * 
+     * @param evt  Objekat koji predstavlja dogadjaj klika na dugme.
+     */
     private void cmbKnjigaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbKnjigaItemStateChanged
 
         Knjiga k = (Knjiga) cmbKnjiga.getSelectedItem();
@@ -217,6 +229,9 @@ public class DodajStavku extends javax.swing.JDialog {
     private javax.swing.JFormattedTextField txtKolicina;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * Metoda kojom se popunjava combobox sa knjigama koje se nalaze u bazi
+     */
     private void popuniKnjige() {
         try {
             ArrayList<Knjiga> lista = KlijentKontroler.getInstance().getAllKnjiga();

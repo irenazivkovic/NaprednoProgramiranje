@@ -12,8 +12,8 @@ import javax.swing.JOptionPane;
 import sesija.Sesija;
 
 /**
- *
- * @author Irena
+ * Forma za login administratora
+ * @author Irena Zivkovic
  */
 public class LoginAdmin extends javax.swing.JFrame {
 
@@ -109,12 +109,23 @@ public class LoginAdmin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Metoda koja se izvrsava ukoliko korisnik zeli da ponisti i zatvori formu
+     * @param evt Objekat koji predstavlja dogadjaj klika na dugme.
+     */
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
 
         System.exit(0);
 
     }//GEN-LAST:event_btnCancelActionPerformed
 
+    /**
+     * Metoda koja se izvrsava prilikom prijavljivanja administratora na sistem.
+     * Prvo se getuju parametri, zatim se ti parametri salju serveru na proveru. Ukoliko su tacni
+     * kredencijali koje je admin uneo, onda se on prijavljuje na sistem i otvara mu se klijentska forma.
+     *  
+     * @param evt Objekat koji predstavlja dogadjaj klika na dugme.
+     */
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         try {
             String username = txtUsername.getText();

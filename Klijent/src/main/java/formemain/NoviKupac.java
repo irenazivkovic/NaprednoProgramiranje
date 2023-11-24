@@ -13,12 +13,13 @@ import javax.swing.JOptionPane;
 import klijentkontroler.KlijentKontroler;
 
 /**
- *
- * @author Irena
+ * Forma za dodavanje kupca
+ * @author Irena Zivkovic
  */
 public class NoviKupac extends javax.swing.JDialog {
 
     /**
+     * Parametrizovan konstruktor klase NoviKupac
      * Creates new form NoviKupac
      */
     public NoviKupac(java.awt.Frame parent, boolean modal) {
@@ -128,6 +129,13 @@ public class NoviKupac extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Metoda koja dodaje kupca.
+     * Getuju se svi parametri sa forme, kreira objekat klase Kupac i serveru se salje zahtev za dodavanje kupca.
+     * Ukoliko je uspesan serversk odgovvor, poziva se klijentska forma.
+     * 
+     * @param evt  Objekat koji predstavlja dogadjaj klika na dugme.
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         try {
@@ -212,6 +220,9 @@ public class NoviKupac extends javax.swing.JDialog {
     private javax.swing.JTextField txtPrezime;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * Metoda koja popunjava combobox sa objektima klase Mesto,
+     */
     private void popuniMesta() {
         try {
             cmbMest.removeAllItems();

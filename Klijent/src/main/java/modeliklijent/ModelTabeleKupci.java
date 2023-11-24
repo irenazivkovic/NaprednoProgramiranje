@@ -14,15 +14,30 @@ import java.util.logging.Logger;
 import javax.swing.table.AbstractTableModel;
 
 /**
- *
- * @author PC
+ * Model tabele za prikaz kupca.
+ * Klasa nasledjuje apstraktnu klasu AbstractTableModel i 
+ * implementira njene apstraktne metode.
+ * 
+ * @author Irena Zivkovic
  */
 public class ModelTabeleKupci extends AbstractTableModel {
 
+    /**
+	 * lista kupac
+	 */
     private ArrayList<Kupac> lista;
+    /**
+     * Naziv kolona tabele kao String
+     */
     private String[] kolone = {"Ime i prezime", "Adresa stanovanja", "Mesto", "Poeni za popust"};
+    /**
+     * Parametar kao String
+     */
     private String parametar = "";
 
+    /**
+     * Konstruktor koji inicijalizuje model tabele kupac.
+     */
     public ModelTabeleKupci() {
         try {
             lista = KlijentKontroler.getInstance().getAllKupac();
@@ -64,15 +79,27 @@ public class ModelTabeleKupci extends AbstractTableModel {
         }
     }
 
+    /**
+     * Metoda koja vraca kupca datog indexa.
+     * @param row Indeks kupca.
+     * @return Kupac sa datog indexa
+     */
     public Kupac getSelectedKupac(int row) {
         return lista.get(row);
     }
 
+    /**
+     * Postavlja parametar.
+     * @param parametar Nova vrednost parametra koji se postavlja.
+     */
     public void setParametar(String parametar) {
         this.parametar = parametar;
         refreshTable();
     }
 
+    /**
+     * Metoda koja sluzi za osvezavanje tabele
+     */
     public void refreshTable() {
         try {
             lista = KlijentKontroler.getInstance().getAllKupac();

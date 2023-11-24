@@ -14,11 +14,15 @@ import javax.swing.JOptionPane;
 import klijentkontroler.KlijentKontroler;
 
 /**
- *
- * @author Irena
+ * Forma prikazuje detalje o izabranom kupcu
+ * 
+ * @author Irena Zivkovic
  */
 public class DetaljiKupca extends javax.swing.JDialog {
 
+    /**
+	 * inicijalizacija kupca
+	 */
     Kupac k;
 
     /**
@@ -210,6 +214,10 @@ public class DetaljiKupca extends javax.swing.JDialog {
     private javax.swing.JTextField txtPrezime;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * Metoda koja popunjava comboBox Mesta. 
+     * Iz baze povlaci sva mesta koja postoje i popunjava prazan comboBox.
+     */
     private void popuniMesta() {
         try {
             cmbMest.removeAllItems();
@@ -223,6 +231,9 @@ public class DetaljiKupca extends javax.swing.JDialog {
         }
     }
 
+    /**
+     * Metoda za sredjivanje forme
+     */
     private void srediFormu() {
         popuniMesta();
         txtAdresa.setText(k.getAdresa());

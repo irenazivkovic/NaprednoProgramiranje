@@ -15,12 +15,13 @@ import modeliklijent.ModelTabeleKupci;
 import modeliklijent.ModelTabeleNarudzbenice;
 
 /**
- *
- * @author Irena
+ * Forma za pretragu narudzbenica
+ * @author Irena Zivkovic
  */
 public class PretragaNarudzbenica extends javax.swing.JDialog {
 
     /**
+     * Parametrizovan konstruktor klase PretragaNarudzbenica
      * Creates new form PretragaKupaca
      */
     public PretragaNarudzbenica(java.awt.Frame parent, boolean modal) {
@@ -33,6 +34,9 @@ public class PretragaNarudzbenica extends javax.swing.JDialog {
         popuniStatuse();
     }
 
+     /**
+     * Metoda koja popunjava combobox sa statusima kupca
+     */
     void popuniStatuse() {
         cmbStatus.removeAllItems();
         for (Status value : Status.values()) {
@@ -165,6 +169,11 @@ public class PretragaNarudzbenica extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Metoda koja pretrazuje narudzbenicu prema unetom parametru
+     * 
+     * @param evt  Objekat koji predstavlja dogadjaj klika na dugme.
+     */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         if (txtParametar.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Unesite parametar za pretragu!");
@@ -176,12 +185,24 @@ public class PretragaNarudzbenica extends javax.swing.JDialog {
         txtParametar.setText(null);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+     /**
+     * Metoda koja vraca sve narudzbenice iz baze i postavlja ih u tabelu
+     * 
+     * @param evt  Objekat koji predstavlja dogadjaj klika na dugme.
+     */
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         txtParametar.setText(null);
         tblKupci.setModel(new ModelTabeleNarudzbenice());
         jButton3.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    /**
+     * Metoda koja vrsi izmenu statusa narudzbenice.
+     * Iz comboboxa se bira status koji zeli da se izmeni, zatim klikom na dugme, salje se zahtev serveru
+     * da izmeni status narudzbenice.
+     * 
+     * @param evt  Objekat koji predstavlja dogadjaj klika na dugme.
+     */
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 
         int row = tblKupci.getSelectedRow();
@@ -280,6 +301,9 @@ public class PretragaNarudzbenica extends javax.swing.JDialog {
     private javax.swing.JTextField txtParametar;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * Metoda koja sluzi za osvezavanje tabele
+     */
     void refreshTable() {
         ModelTabeleNarudzbenice mt = (ModelTabeleNarudzbenice) tblKupci.getModel();
         mt.refreshTable();

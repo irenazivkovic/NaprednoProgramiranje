@@ -11,13 +11,22 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
+ * Sistemska operacija koja vraca sve knjige
  *
- * @author Irena
+ * @author Irena Zivkovic
  */
 public class SOGetAllKnjiga extends ApstraktnaSO {
 
+    /**
+     * Lista elemenata klase Knjiga
+     */
     private ArrayList<Knjiga> lista;
 
+    /**
+     * Metoda vraca listu svih knjiga
+     *
+     * @return lista elemenata klase Knjiga
+     */
     public ArrayList<Knjiga> getLista() {
         return lista;
     }
