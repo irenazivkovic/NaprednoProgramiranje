@@ -10,21 +10,58 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
+ * Predstavlja stsvku narudzbenice koja je ugradjena u narudzbenicu. Stavka je
+ * slab objekat od narudzbenice. Implementira klasu ApstraktniObjekat
+ *
+ * Ima atribute: narudzbenica, knjiga, redni broj, kolivinu, cenu po komadu i
+ * pdv
  *
  * @author Irena
  */
 public class Stavka extends ApstraktniObjekat implements Serializable {
 
+    /**
+     * Narudbenica kao objekat klase Narudzbenica
+     */
     private Narudzbenica narudzbenica;
+    /**
+     * Knjiga kao objekat klase Knjiga
+     */
     private Knjiga knjiga;
+    /**
+     * Redni broj stavke narudzbenice kao ceo broj
+     */
     private int redniBroj;
+    /**
+     * Kolicina kao ceo broj
+     */
     private int kolicina;
+    /**
+     * Cena stavke po komadu kao double
+     */
     private double cenaKom;
+    /**
+     * PDV stavke kao double
+     */
     private double PDV;
 
+    /**
+     * Bezparametarski konstruktor.
+     */
     public Stavka() {
     }
 
+    /**
+     * Parametarski konstruktor koji postavlja vrednosti za narudzbenicu,
+     * knjigu, redni broj stavke, kolicinu, cenu po komadu i PDV.
+     *
+     * @param narudzbenica nova vrednost za objekat narudzbenice
+     * @param knjiga nova vrednost za objekat knjige
+     * @param redniBroj nova vrednost za redni broj stavke narudzbenice
+     * @param kolicina nova vrednost za kolicinu stavke narudzbenice
+     * @param cenaKom nova vrednost za cenu po komadu stavke narudzbenice
+     * @param PDV nova vrednost za PDV stavke narudzbenice
+     */
     public Stavka(Narudzbenica narudzbenica, Knjiga knjiga, int redniBroj, int kolicina, double cenaKom, double PDV) {
         this.narudzbenica = narudzbenica;
         this.knjiga = knjiga;
@@ -95,51 +132,156 @@ public class Stavka extends ApstraktniObjekat implements Serializable {
         return "NarudzbenicaID=" + narudzbenica.getNarudzbenicaID();
     }
 
+    /**
+     * Vraca objekat Narudzbenica
+     *
+     * @return narudzbenica kao objekat klase Narudzbenica
+     */
     public Narudzbenica getNarudzbenica() {
         return narudzbenica;
     }
 
+    /**
+     * Postavlja vrednost atributa narudzbenica.
+     *
+     * Narudzbenica ne sme biti null.
+     *
+     * @param narudzbenica nova vrednost za narudzbenicu
+     *
+     * @throws NullPointerException ako se unese null vrednost za narudzbenica
+     */
     public void setNarudzbenica(Narudzbenica narudzbenica) {
+        if (narudzbenica == null) {
+            throw new NullPointerException("Narudzbenica ne sme biti null");
+        }
+
         this.narudzbenica = narudzbenica;
     }
 
+    /**
+     * Vraca objekat knjiga
+     *
+     * @return knjiga kao objekat klase Knjiga
+     */
     public Knjiga getKnjiga() {
         return knjiga;
     }
 
+    /**
+     * Postavlja vrednost atributa knjiga.
+     *
+     * Knjiga ne sme biti null.
+     *
+     * @param knjiga nova vrednost za knjigu
+     *
+     * @throws NullPointerException ako se unese null vrednost za knjigu
+     */
     public void setKnjiga(Knjiga knjiga) {
+        if (knjiga == null) {
+            throw new NullPointerException("Knjiga ne sme biti null");
+        }
+
         this.knjiga = knjiga;
     }
 
+    /**
+     * Vraca redni broj stavke narudzbenice
+     *
+     * @return redniBroj kao int
+     */
     public int getRedniBroj() {
         return redniBroj;
     }
 
+    /**
+     * Postavlja vrednost za redni broj stavke.
+     *
+     * Redni broj mora biti veci od nule.
+     *
+     * @param redniBroj redni broj stavke kao ceo broj
+     * @throws IllegalArgumentException ako se unese redni broj koji je manji od 1
+     * 1
+     */
     public void setRedniBroj(int redniBroj) {
+        if (redniBroj <= 0) {
+            throw new IllegalArgumentException("Redni broj ne sme biti nula niti manji");
+        }
+
         this.redniBroj = redniBroj;
     }
 
+    /**
+     * Vraca kolicinu stavke narudzbenice
+     *
+     * @return kolicina kao int
+     */
     public int getKolicina() {
         return kolicina;
     }
 
+    /**
+     * Postavlja vrednost za kolicinu stavke.
+     *
+     * Kolicina mora biti veca ili jednaka nulu.
+     *
+     * @param kolicina kolicina stavke kao ceo broj
+     * @throws IllegalArgumentException ako se unese kolicina koja je manji od 0
+     */
     public void setKolicina(int kolicina) {
+        if (kolicina < 0) {
+            throw new IllegalArgumentException("Kolicina ne sme biti manja od nule");
+        }
+
         this.kolicina = kolicina;
     }
 
+    /**
+     * Vraca cenu po komadu stavke narudzbenice
+     *
+     * @return cenaKom kao double
+     */
     public double getCenaKom() {
         return cenaKom;
     }
 
+    /**
+     * Postavlja vrednost za cenu stavke po komadu.
+     *
+     * Cena mora biti veci od nule.
+     *
+     * @param cenaKom cena stavke kao double vrednost
+     * @throws IllegalArgumentException ako se unese cenu koja je manji od 1
+     */
     public void setCenaKom(double cenaKom) {
+        if (cenaKom <= 0) {
+            throw new IllegalArgumentException("Cena po komadu ne sme biti nula niti manji");
+        }
+
         this.cenaKom = cenaKom;
     }
 
+    /**
+     * Vraca PDV stavke narudzbenice
+     *
+     * @return PDV kao double
+     */
     public double getPDV() {
         return PDV;
     }
 
+    /**
+     * Postavlja vrednost za PDV stavke.
+     *
+     * PDV mora biti veci od nule.
+     *
+     * @param PDV PDV stavke kao double vrednost
+     * @throws IllegalArgumentException ako se unese PDV koji je manji od 0
+     */
     public void setPDV(double PDV) {
+        if (PDV <= 0) {
+            throw new IllegalArgumentException("PDV ne sme biti nula niti manji");
+        }
+
         this.PDV = PDV;
     }
 

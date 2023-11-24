@@ -11,13 +11,22 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
+ * Sistemska operacija koja vraca sva mesta
  *
- * @author Irena
+ * @author Irena Zivkovic
  */
 public class SOGetAllMesto extends ApstraktnaSO {
 
+    /**
+     * Lista elemenata klase Mesto
+     */
     private ArrayList<Mesto> lista;
 
+    /**
+     * Metoda vraca listu svih mesta
+     *
+     * @return lista elemenata klase Mesto
+     */
     public ArrayList<Mesto> getLista() {
         return lista;
     }

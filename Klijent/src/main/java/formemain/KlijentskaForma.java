@@ -19,12 +19,24 @@ import klijentkontroler.KlijentKontroler;
 import modeliklijent.ModelTabeleStavke;
 
 /**
- *
- * @author Irena
+ * Glavna klijentska forma.
+ * Ova klasa predstavlja glavni prozor aplikacije i omogucava korisniku interakciju sa funkcionalnostima sistema.
+ * Korisnik moze doda i pretrazi kupca, doda  i pretrazi knjigu, pretrazi narudzbenicu, dodaje/menja/brise stavku 
+ * narudzbenice, sacuva narudzbenicu i ponovo pokrene unos.
+ * 
+ * Takodje, korisnik kad zavrsi sa radom moze da se izloguje iz aplikacije.
+ * 
+ * @author Irena Zivkovic
  */
 public class KlijentskaForma extends javax.swing.JFrame implements Runnable {
 
+    /**
+     * Format za datum koji se prikazuje u obliku: dd.MM.yyyy
+     */
     SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy - HH:mm:ss");
+    /**
+     * Ukupna cena tipa double
+     */
     double ukupnaCena = 0;
 
     /**
@@ -378,36 +390,73 @@ public class KlijentskaForma extends javax.swing.JFrame implements Runnable {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Metoda koja otvara formu za dodavanje knjiga
+     * @param evt Objekat koji predstavlja dogadjaj klika na dugme.
+     */
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         new NovaKnjiga(this, true).setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    /**
+     * Metoda koja otvara formu za pretragu knjiga
+     * @param evt Objekat koji predstavlja dogadjaj klika na dugme.
+     */
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         new PretragaKnjiga(this, true).setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
+    /**
+     * Metoda koja otvara formu za dodavanje kupca
+     * 
+     * @param evt Objekat koji predstavlja dogadjaj klika na dugme.
+     */
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         new NoviKupac(this, true).setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
+    /**
+     * Metoda koja otvara formu za pretragu kupaca
+     * @param evt Objekat koji predstavlja dogadjaj klika na dugme.
+     */
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         new PretragaKupaca(this, true).setVisible(true);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
+    /**
+     * Metoda koja otvara formu dodaj stavku
+     * 
+     * @param evt Objekat koji predstavlja dogadjaj klika na dugme.
+     */
     private void btnDodajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajActionPerformed
         new DodajStavku(this, true).setVisible(true);
     }//GEN-LAST:event_btnDodajActionPerformed
 
+    /**
+     * Metoda koja poziva metodu za proveru popusta klikom na dugme.
+     * 
+     * @param evt Objekat koji predstavlja dogadjaj klika na dugme.
+     */
     private void btnPopustActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPopustActionPerformed
         proveriPopust();
         btnPopust.setEnabled(false);
     }//GEN-LAST:event_btnPopustActionPerformed
 
+    /**
+     * Metoda koja prikazuje upozorenje da mora da se zavrsi unos stavki narudzbenice
+     * 
+     * @param evt Objekat koji predstavlja dogadjaj klika na dugme.
+     */
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         JOptionPane.showMessageDialog(this, "Dugme za obracun popusta se pojavljuje kada zavrsite sa unosom stavki narudzbenice!");
 
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    /**
+     * Metoda koja se poziva kada se klikne na dugme Zavrsi unos.
+     * Tada se aktivira dugme Obracunaj popust i deaktivira dugme za dodavanje novih stavki.
+     * @param evt Objekat koji predstavlja dogadjaj klika na dugme.
+     */
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         ModelTabeleStavke mt = (ModelTabeleStavke) tblStavke.getModel();
         if (mt.getLista().isEmpty()) {
@@ -418,6 +467,12 @@ public class KlijentskaForma extends javax.swing.JFrame implements Runnable {
         btnPopust.setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
 
+    /**
+     * Metoda kojom se vrsi inicijalizacija kupca.
+     * Iz comboboxa se bira kupac, i zatim se objekat inicijalizuje.
+     * 
+     * @param evt Objekat koji predstavlja dogadjaj klika na dugme.
+     */
     private void cmbKupacItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbKupacItemStateChanged
 
         Kupac k = (Kupac) cmbKupac.getSelectedItem();
@@ -431,6 +486,11 @@ public class KlijentskaForma extends javax.swing.JFrame implements Runnable {
         }
     }//GEN-LAST:event_cmbKupacItemStateChanged
 
+    /**
+     * Metoda kojom se otvara nova forma za upozorenje ukoliko korisnik ne sacuva izmene
+     * 
+     * @param evt Objekat koji predstavlja dogadjaj klika na dugme.
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         int result = JOptionPane.showConfirmDialog(this, "Promene nece biti sacuvane ukoliko niste kliknuli na sacuvaj. Nastavi?", "Upozorenje", JOptionPane.YES_NO_OPTION);
@@ -442,6 +502,12 @@ public class KlijentskaForma extends javax.swing.JFrame implements Runnable {
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    /**
+     * Metoda koja se izvrsava kada admin zeli da se izloguje iz sistema. 
+     * Tada se korisniku pojavljuje nova forma koja proverava da korisnik stvarno zeli da se izloguje.
+     * 
+     * @param evt Objekat koji predstavlja dogadjaj klika na dugme.
+     */
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 
         int result = JOptionPane.showConfirmDialog(this, "Da li zelite da se izlogujete?", "Pitanje", JOptionPane.YES_NO_OPTION);
@@ -452,6 +518,14 @@ public class KlijentskaForma extends javax.swing.JFrame implements Runnable {
 
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    /**
+     * Metoda za cuvanje nardzbenice u bazi podataka.
+     * Prvo se getuju svi parametri, pa se salje zahtev serveru da sacuva narudzbenicu. Ukoliko je narudzbenica uspesno sacuvana, 
+     * prolazi se kroz tabelu stavki i vrsi se racunanje novog stanja knjiga. Ponovo se salje zahtev serveru da sacuva izmene.
+     * Nakon toga se izracunavaju poeni i vrsi se update kupca na strani servera.
+     * 
+     * @param evt Objekat koji predstavlja dogadjaj klika na dugme.
+     */
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
         try {
@@ -488,6 +562,11 @@ public class KlijentskaForma extends javax.swing.JFrame implements Runnable {
 
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    /**
+     * Metoda koja obracunava ukupnu cenu za sve stavke iz tabele
+     * 
+     * @param evt Objekat koji predstavlja dogadjaj klika na dugme.
+     */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         int row = tblStavke.getSelectedRow();
         if (row >= 0) {
@@ -501,6 +580,10 @@ public class KlijentskaForma extends javax.swing.JFrame implements Runnable {
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    /**
+     * Metoda koja otvara formu za pretragu narudzbenice
+     * @param evt Objekat koji predstavlja dogadjaj klika na dugme.
+     */
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
       new PretragaNarudzbenica(this, true).setVisible(true);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
@@ -580,9 +663,15 @@ public class KlijentskaForma extends javax.swing.JFrame implements Runnable {
     private javax.swing.JFormattedTextField txtUkupnaCena;
     // End of variables declaration//GEN-END:variables
 
+     /**
+     * Metoda koja popunjava combobox sa svim knjigama iz baze podataka
+     */
     void popuniKnjige() {
     }
 
+    /**
+     * Metoda koja popunjava combobox sa svim statusima iz baze podataka
+     */
     void popuniStatuse() {
         cmbStatus.removeAllItems();
         for (Status value : Status.values()) {
@@ -590,6 +679,9 @@ public class KlijentskaForma extends javax.swing.JFrame implements Runnable {
         }
     }
 
+    /**
+     * Metoda koja popunjava combobox sa svim kupcima iz baze podataka
+     */
     void popuniKupce() {
         try {
             ArrayList<Kupac> kupci = KlijentKontroler.getInstance().getAllKupac();
@@ -614,15 +706,26 @@ public class KlijentskaForma extends javax.swing.JFrame implements Runnable {
         }
     }
 
+    /**
+     * Metoda kojom se pokrece nit
+     */
     private void startujNit() {
         Thread t = new Thread(this);
         t.start();
     }
 
+    /**
+     * Metoda azurira stavku s
+     * @param s stavka koja se azurira
+     */
     void azuriraj(Stavka s) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    /**
+     * Metoda za dodavanje stavke u tabelu sa stavkama
+     * @param s stavka koja treba da se doda
+     */
     void dodaj(Stavka s) {
         ModelTabeleStavke mt = (ModelTabeleStavke) tblStavke.getModel();
         mt.dodaj(s);
@@ -631,6 +734,12 @@ public class KlijentskaForma extends javax.swing.JFrame implements Runnable {
         txtUkupnaCena.setText(ukupnaCena + "");
     }
 
+    /**
+     * Metoda koja proverava da li vec postoji stavka u bazi
+     * 
+     * @param s stavka koja treba da se proveri
+     * @return boolean vrednost. True ako postoji i false ako ne postoji
+     */
     boolean postoji(Stavka s) {
         ModelTabeleStavke mt = (ModelTabeleStavke) tblStavke.getModel();
         if (mt.postoji(s)) {
@@ -639,6 +748,9 @@ public class KlijentskaForma extends javax.swing.JFrame implements Runnable {
         return false;
     }
 
+    /**
+     * Metoda za obracunavanje i proveru popusta
+     */
     private void proveriPopust() {
         if (txtUkupnaCena.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Morate prvo ubaciti stavku!");

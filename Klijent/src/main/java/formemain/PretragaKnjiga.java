@@ -8,12 +8,13 @@ import javax.swing.JOptionPane;
 import modeliklijent.ModelTabeleKnjige;
 
 /**
- *
- * @author Irena
+ * Forma za pretragu knjiga
+ * @author Irena Zivkovic
  */
 public class PretragaKnjiga extends javax.swing.JDialog {
 
     /**
+     * Parametrizovan konstruktork klase PretragaKnjiga
      * Creates new form PretragaKnjiga
      */
     public PretragaKnjiga(java.awt.Frame parent, boolean modal) {
@@ -119,6 +120,11 @@ public class PretragaKnjiga extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Metoda koja pretrazuje knjigu prema unetom parametru
+     * 
+     * @param evt  Objekat koji predstavlja dogadjaj klika na dugme.
+     */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         if (txtParametar.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Unesite parametar za pretragu!");
@@ -130,12 +136,22 @@ public class PretragaKnjiga extends javax.swing.JDialog {
         txtParametar.setText(null);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    /**
+     * Metoda koja vraca sve knjige iz baze i postavlja ih u tabelu
+     * 
+     * @param evt  Objekat koji predstavlja dogadjaj klika na dugme.
+     */
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         tblKnjige.setModel(new ModelTabeleKnjige());
         jButton3.setVisible(false);
         txtParametar.setText(null);
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    /**
+     * Metoda koja poziva formu o detaljima knjige za izabranu knjigu
+     * 
+     * @param evt  Objekat koji predstavlja dogadjaj klika na dugme.
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         int row = tblKnjige.getSelectedRow();
         if (row >= 0) {
@@ -199,6 +215,9 @@ public class PretragaKnjiga extends javax.swing.JDialog {
     private javax.swing.JTextField txtParametar;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * Metoda koja sluzi za osvezavanje tabele
+     */
     void refreshTable() {
         ModelTabeleKnjige mt = (ModelTabeleKnjige) tblKnjige.getModel();
         mt.refreshTable();

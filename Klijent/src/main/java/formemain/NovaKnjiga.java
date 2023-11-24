@@ -11,12 +11,13 @@ import javax.swing.JOptionPane;
 import klijentkontroler.KlijentKontroler;
 
 /**
- *
- * @author Irena
+ * Forma za dodavanje knjige
+ * @author Irena Zivkovic
  */
 public class NovaKnjiga extends javax.swing.JDialog {
 
     /**
+     * Parametrizovan konstruktor klase NovaKnjiga
      * Creates new form NovaKnjiga
      */
     public NovaKnjiga(java.awt.Frame parent, boolean modal) {
@@ -115,6 +116,13 @@ public class NovaKnjiga extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Metoda za dodavanje nove knjige.
+     * Getuju se svi parametri sa forme, zatim se pravi objekat klase Knjiga i serveru se salje zahtev da doda knjigu.
+     * Ukoliko je serverski odgovor uspesan, poziva se klijentska forma.
+     * 
+     * @param evt  Objekat koji predstavlja dogadjaj klika na dugme.
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         try {

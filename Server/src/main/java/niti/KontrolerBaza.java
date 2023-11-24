@@ -9,13 +9,21 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 /**
+ * Klasa koja predstavlja server i omogucava pokretanje servera i prihvatanje
+ * klijentskih konekcija.
  *
- * @author PC
+ * @author Irena Zivkovic
  */
 public class KontrolerBaza extends Thread {
 
+    /**
+     * ServerSocket koji se koristi za prihvatanje konekcija.
+     */
     private ServerSocket serverSocket;
 
+    /**
+     * Konstruktor koji vrsi pokretanje servera i zauzimanje porta
+     */
     public KontrolerBaza() {
         try {
             serverSocket = new ServerSocket(9000);
@@ -24,6 +32,10 @@ public class KontrolerBaza extends Thread {
         }
     }
 
+    /**
+     * Metoda run() klase Thread koja se izvrsava prilikom pokretanja niti. Vrsi
+     * pokretanje servera i prihvatanje klijentskih konekcija.
+     */
     @Override
     public void run() {
         try {

@@ -11,28 +11,37 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
+ * Sistemska operacija koja vraca sve kupce
  *
- * @author Irena
+ * @author Irena Zivkovic
  */
 public class SOGetAllKupac extends ApstraktnaSO {
 
+    /**
+     * Lista elemenata klase Kupac
+     */
     private ArrayList<Kupac> lista;
 
+    /**
+     * Metoda vraca listu svih kupaca
+     *
+     * @return lista elemenata klase Kupac
+     */
     public ArrayList<Kupac> getLista() {
         return lista;
     }
 
     @Override
     protected void validate(ApstraktniObjekat ado) throws Exception {
-        if(!(ado instanceof Kupac)){
+        if (!(ado instanceof Kupac)) {
             throw new Exception("Nevalidan objekat!");
         }
     }
 
     @Override
     protected void execute(ApstraktniObjekat ado) throws SQLException {
-        ArrayList<ApstraktniObjekat> kupci=DBBroker.getInstance().selectBezUslova(ado);
-        lista=(ArrayList<Kupac>)(ArrayList<?>) kupci;
+        ArrayList<ApstraktniObjekat> kupci = DBBroker.getInstance().selectBezUslova(ado);
+        lista = (ArrayList<Kupac>) (ArrayList<?>) kupci;
     }
 
 }

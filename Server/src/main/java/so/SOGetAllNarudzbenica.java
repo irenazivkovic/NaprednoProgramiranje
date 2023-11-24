@@ -11,13 +11,22 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
+ * Sistemska operacija koja vraca sve narudzbenice
  *
- * @author Irena
+ * @author Irena Zivkovic
  */
 public class SOGetAllNarudzbenica extends ApstraktnaSO {
 
+    /**
+     * Lista elemenata klase Narudzbenica
+     */
     private ArrayList<Narudzbenica> lista;
 
+    /**
+     * Metoda vraca listu svih narudzbenica
+     *
+     * @return lista elemenata klase Narudzbenica
+     */
     public ArrayList<Narudzbenica> getLista() {
         return lista;
     }

@@ -11,13 +11,22 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
+ * Sistemska operacija koja dodaje knjigu
  *
- * @author Irena
+ * @author Irena Zivkovic
  */
 public class SOAddKnjiga extends ApstraktnaSO {
 
+    /**
+     * boolean vrednost za uspesno koji je postavljen na pocetku na false
+     */
     private boolean uspesno = false;
 
+    /**
+     * Metoda pokazuje da li operacija uspesna.
+     *
+     * @return true ako je uspesna operacija, ili false ukoliko nije
+     */
     public boolean isUspesno() {
         return uspesno;
     }
@@ -45,7 +54,7 @@ public class SOAddKnjiga extends ApstraktnaSO {
     @Override
     protected void execute(ApstraktniObjekat ado) throws SQLException {
         DBBroker.getInstance().insert(ado);
-        uspesno=true;
+        uspesno = true;
     }
 
 }

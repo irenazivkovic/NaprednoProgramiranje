@@ -16,15 +16,29 @@ import java.util.logging.Logger;
 import javax.swing.table.AbstractTableModel;
 
 /**
+ * Model tabele za prikaz narudzbenica. Klasa nasledjuje apstraktnu klasu
+ * AbstractTableModel i implementira njene apstraktne metode.
  *
- * @author PC
+ * @author Irena Zivkovic
  */
 public class ModelTabeleNarudzbenice extends AbstractTableModel {
-    
+
+    /**
+     * lista narudzbenica
+     */
     private ArrayList<Narudzbenica> lista;
+    /**
+     * Naziv kolona tabele kao String
+     */
     private String[] kolone = {"Sifra narudzbenice", "Admin kreirao", "Ime i prezime kupca", "Datum narudzbenice", "Status"};
+    /**
+     * Parametar kao String
+     */
     private String parametar = "";
-    
+
+    /**
+     * Konstruktor koji inicijalizuje model tabele narudzbenica.
+     */
     public ModelTabeleNarudzbenice() {
         try {
             lista = KlijentKontroler.getInstance().getAllNarudzbenica();
@@ -32,22 +46,22 @@ public class ModelTabeleNarudzbenice extends AbstractTableModel {
             Logger.getLogger(ModelTabeleNarudzbenice.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     @Override
     public int getRowCount() {
         return lista.size();
     }
-    
+
     @Override
     public int getColumnCount() {
         return kolone.length;
     }
-    
+
     @Override
     public String getColumnName(int i) {
         return kolone[i];
     }
-    
+
     @Override
     public Object getValueAt(int row, int column) {
         Narudzbenica n = lista.get(row);
@@ -67,16 +81,30 @@ public class ModelTabeleNarudzbenice extends AbstractTableModel {
                 return null;
         }
     }
-    
+
+    /**
+     * Metoda koja vraca narudzbenicu datog indexa.
+     *
+     * @param row Indeks narudzbenice.
+     * @return Narudzbenica sa datog indexa.
+     */
     public Narudzbenica getSelectedNarudzbenica(int row) {
         return lista.get(row);
     }
-    
+
+    /**
+     * Postavlja parametar.
+     *
+     * @param parametar Nova vrednost parametra koji se postavlja.
+     */
     public void setParametar(String parametar) {
         this.parametar = parametar;
         refreshTable();
     }
-    
+
+    /**
+     * Metoda koja sluzi za osvezavanje tabele
+     */
     public void refreshTable() {
         try {
             lista = KlijentKontroler.getInstance().getAllNarudzbenica();
@@ -91,10 +119,10 @@ public class ModelTabeleNarudzbenice extends AbstractTableModel {
                 lista = novaLista;
             }
             fireTableDataChanged();
-            
+
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
-    
+
 }
