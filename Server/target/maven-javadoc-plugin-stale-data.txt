@@ -1,0 +1,59 @@
+@options
+@packages
+-classpath
+'C:/Users/irena2/.m2/repository/rs/np/Zajednicki/1.1.0/Zajednicki-1.1.0.jar;C:/Users/irena2/.m2/repository/mysql/mysql-connector-java/8.0.30/mysql-connector-java-8.0.30.jar;C:/Users/irena2/.m2/repository/com/google/protobuf/protobuf-java/3.19.4/protobuf-java-3.19.4.jar;C:/Users/irena2/.m2/repository/com/google/code/gson/gson/2.8.9/gson-2.8.9.jar'
+-encoding
+'UTF-8'
+-protected
+-source
+'1.7'
+-sourcepath
+'C:/Users/irena2/git/NaprednoProgramiranje/Server/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2023. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'C:/Users/irena2/git/NaprednoProgramiranje/Server/target/site/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'Server 1.1.0 API'
+-linkoffline
+'https://docs.oracle.com/javase/7/docs/api' 'C:/Users/irena2/git/NaprednoProgramiranje/Server/target/javadoc-bundle-options'
+-linkoffline
+'http://www.example.com/Zajednicki/apidocs' 'C:/Users/irena2/git/NaprednoProgramiranje/Zajednicki/target/site/apidocs'
+-use
+-version
+-windowtitle
+'Server 1.1.0 API'
+broker
+form
+main
+niti
+serverkontroler
+so
+C:\Users\irena2\.m2\repository\rs\np\Zajednicki\1.1.0\Zajednicki-1.1.0.jar = 1700864065392
+C:\Users\irena2\.m2\repository\mysql\mysql-connector-java\8.0.30\mysql-connector-java-8.0.30.jar = 1700774505281
+C:\Users\irena2\.m2\repository\com\google\protobuf\protobuf-java\3.19.4\protobuf-java-3.19.4.jar = 1700665446527
+C:\Users\irena2\.m2\repository\com\google\code\gson\gson\2.8.9\gson-2.8.9.jar = 1700650555332
+C:\Users\irena2\git\NaprednoProgramiranje\Server\src\main\java = 1700925325018
+C:\Users\irena2\git\NaprednoProgramiranje\Server\target\site\apidocs\allclasses-index.html = 1700943130338
+C:\Users\irena2\git\NaprednoProgramiranje\Server\target\site\apidocs\allpackages-index.html = 1700943130344
+C:\Users\irena2\git\NaprednoProgramiranje\Server\target\site\apidocs\element-list = 1700943130002
+C:\Users\irena2\git\NaprednoProgramiranje\Server\target\site\apidocs\help-doc.html = 1700943130417
+C:\Users\irena2\git\NaprednoProgramiranje\Server\target\site\apidocs\index-all.html = 1700943130401
+C:\Users\irena2\git\NaprednoProgramiranje\Server\target\site\apidocs\index.html = 1700943130300
+C:\Users\irena2\git\NaprednoProgramiranje\Server\target\site\apidocs\jquery-ui.overrides.css = 1700943130494
+C:\Users\irena2\git\NaprednoProgramiranje\Server\target\site\apidocs\member-search-index.js = 1700943130356
+C:\Users\irena2\git\NaprednoProgramiranje\Server\target\site\apidocs\module-search-index.js = 1700943130347
+C:\Users\irena2\git\NaprednoProgramiranje\Server\target\site\apidocs\overview-summary.html = 1700943130406
+C:\Users\irena2\git\NaprednoProgramiranje\Server\target\site\apidocs\overview-tree.html = 1700943130292
+C:\Users\irena2\git\NaprednoProgramiranje\Server\target\site\apidocs\package-search-index.js = 1700943130351
+C:\Users\irena2\git\NaprednoProgramiranje\Server\target\site\apidocs\script.js = 1700943130426
+C:\Users\irena2\git\NaprednoProgramiranje\Server\target\site\apidocs\search.js = 1700943130430
+C:\Users\irena2\git\NaprednoProgramiranje\Server\target\site\apidocs\serialized-form.html = 1700943130137
+C:\Users\irena2\git\NaprednoProgramiranje\Server\target\site\apidocs\stylesheet.css = 1700943130422
+C:\Users\irena2\git\NaprednoProgramiranje\Server\target\site\apidocs\tag-search-index.js = 1700943130361
+C:\Users\irena2\git\NaprednoProgramiranje\Server\target\site\apidocs\type-search-index.js = 1700943130353
