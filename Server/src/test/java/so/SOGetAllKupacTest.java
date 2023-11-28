@@ -58,5 +58,36 @@ class SOGetAllKupacTest {
 	            assertTrue(validanObjekat instanceof Kupac);
 	        
 	    }
+	 
+	 @Test
+	    public void testGetAllKupac() throws SQLException {
+	        
+	        Mesto mesto = new Mesto();
+	        mesto.setNaziv("Beograd"); 
+	        
+	        k.setIme("John Doe"); 
+	        k.setMesto(mesto);
+
+	        soGetAllKupac.execute(k);
+	        
+	        List<Kupac> korisnici = (List<Kupac>) soGetAllKupac.getLista();
+
+         
+         Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+         
+         String jsonString = gson.toJson(korisnici);
+
+         
+         try (FileWriter writer = new FileWriter("kupci.json")) {
+             writer.write(jsonString);
+         } catch (IOException e) {
+             e.printStackTrace();
+         }
+
+	        ArrayList<Kupac> lista = soGetAllKupac.getLista();
+	        assertNotNull(lista);
+	        assertTrue(lista.size() > 0); 
+ }
 
 }

@@ -56,5 +56,31 @@ class SOGetAllKnjigaTest {
             assertTrue(validanObjekat instanceof Knjiga);
         
     }
+    
+    @Test
+    public void testUspesnoDohvatanjeSvihKnjiga() throws SQLException {
+       // Knjiga k = new Knjiga(5, "Ana Karenjina", "Lav Tolstoj", 1000, 30); 
+        
+		k.setNaslov("Knjiga");
+		k.setPisac("Pisac");
+		
+            soGetAllKnjiga.execute(k);
+            List<Knjiga> lista = soGetAllKnjiga.getLista();
+
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+            
+            String jsonString = gson.toJson(lista);
+            
+            try (FileWriter writer = new FileWriter("knjige.json")) {
+                writer.write(jsonString);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            assertNotNull(lista);
+	        assertTrue(lista.size() > 0); 
+        
+    }
 
 }

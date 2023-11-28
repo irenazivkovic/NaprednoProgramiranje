@@ -57,6 +57,33 @@ class SOAddKnjigaTest {
         }
     }
 	
+	@Test
+	public void testExecute() throws Exception {
+
+        Knjiga knjiga = new Knjiga();
+        knjiga.setKnjigaID(5);
+        knjiga.setNaslov("Ana Karenjina");
+        knjiga.setPisac("Lav Tolstoj");
+        knjiga.setCena(50); 
+        
+        
+        soAddKnjiga.execute(knjiga);
+        
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+        
+        String jsonString = gson.toJson(knjiga);
+        
+        try (FileWriter writer = new FileWriter("dodata_knjiga.json")) {
+            writer.write(jsonString);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        assertTrue(soAddKnjiga.isUspesno());
+    }
+	
+	
 	/*
 	@Test
 	void testDodajKnjiguDuplikat() throws Exception {

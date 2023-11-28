@@ -1,0 +1,38 @@
+[
+  {
+    "kupacID": 1,
+    "ime": "Luka",
+    "prezime": "Kovacevic",
+    "adresa": "Djure Djakovica 32",
+    "poeni": 260,
+    "mesto": {
+      "mestoID": 2,
+      "PTT": 22000,
+      "naziv": "Mesto 2"
+    }
+  },
+  {
+    "kupacID": 2,
+    "ime": "Ivan",
+    "prezime": "Ivanovic",
+    "adresa": "Ljubice Stanisavljevic 15",
+    "poeni": 10,
+    "mesto": {
+      "mestoID": 3,
+      "PTT": 33000,
+      "naziv": "Mesto 3"
+    }
+  },
+  {
+    "kupacID": 3,
+    "ime": "Ivica",
+    "prezime": "Jovic",
+    "adresa": "Djure Djakovica 31",
+    "poeni": 10,
+    "mesto": {
+      "mestoID": 2,
+      "PTT": 22000,
+      "naziv": "Mesto 2"
+    }
+  }
+]
