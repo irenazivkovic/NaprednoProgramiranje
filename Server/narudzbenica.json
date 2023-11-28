@@ -1,0 +1,242 @@
+[
+  {
+    "narudzbenicaID": 5,
+    "datum": "Jan 24, 2023, 5:48:12 PM",
+    "popust": 39.0,
+    "ukupnaCena": 2401.88,
+    "status": "ODBIJENA",
+    "kupac": {
+      "kupacID": 1,
+      "ime": "Luka",
+      "prezime": "Kovacevic",
+      "adresa": "Djure Djakovica 32",
+      "poeni": 260,
+      "mesto": {
+        "mestoID": 2,
+        "PTT": 22000,
+        "naziv": "Mesto 2"
+      }
+    },
+    "administrator": {
+      "adminID": 1,
+      "username": "luka",
+      "password": "luka123"
+    }
+  },
+  {
+    "narudzbenicaID": 6,
+    "datum": "Jan 24, 2023, 5:57:01 PM",
+    "popust": 41.0,
+    "ukupnaCena": 9735.0,
+    "status": "KREIRANA",
+    "kupac": {
+      "kupacID": 1,
+      "ime": "Luka",
+      "prezime": "Kovacevic",
+      "adresa": "Djure Djakovica 32",
+      "poeni": 260,
+      "mesto": {
+        "mestoID": 2,
+        "PTT": 22000,
+        "naziv": "Mesto 2"
+      }
+    },
+    "administrator": {
+      "adminID": 1,
+      "username": "luka",
+      "password": "luka123"
+    }
+  },
+  {
+    "narudzbenicaID": 7,
+    "datum": "Jan 24, 2023, 5:57:19 PM",
+    "popust": 43.0,
+    "ukupnaCena": 3762.0,
+    "status": "KREIRANA",
+    "kupac": {
+      "kupacID": 1,
+      "ime": "Luka",
+      "prezime": "Kovacevic",
+      "adresa": "Djure Djakovica 32",
+      "poeni": 260,
+      "mesto": {
+        "mestoID": 2,
+        "PTT": 22000,
+        "naziv": "Mesto 2"
+      }
+    },
+    "administrator": {
+      "adminID": 1,
+      "username": "luka",
+      "password": "luka123"
+    }
+  },
+  {
+    "narudzbenicaID": 8,
+    "datum": "Jan 24, 2023, 5:57:34 PM",
+    "popust": 43.0,
+    "ukupnaCena": 3762.0,
+    "status": "KREIRANA",
+    "kupac": {
+      "kupacID": 1,
+      "ime": "Luka",
+      "prezime": "Kovacevic",
+      "adresa": "Djure Djakovica 32",
+      "poeni": 260,
+      "mesto": {
+        "mestoID": 2,
+        "PTT": 22000,
+        "naziv": "Mesto 2"
+      }
+    },
+    "administrator": {
+      "adminID": 1,
+      "username": "luka",
+      "password": "luka123"
+    }
+  },
+  {
+    "narudzbenicaID": 9,
+    "datum": "Jan 24, 2023, 5:59:03 PM",
+    "popust": 43.0,
+    "ukupnaCena": 3762.0,
+    "status": "PRIHVACENA",
+    "kupac": {
+      "kupacID": 1,
+      "ime": "Luka",
+      "prezime": "Kovacevic",
+      "adresa": "Djure Djakovica 32",
+      "poeni": 260,
+      "mesto": {
+        "mestoID": 2,
+        "PTT": 22000,
+        "naziv": "Mesto 2"
+      }
+    },
+    "administrator": {
+      "adminID": 1,
+      "username": "luka",
+      "password": "luka123"
+    }
+  },
+  {
+    "narudzbenicaID": 10,
+    "datum": "Jan 24, 2023, 6:03:43 PM",
+    "popust": 45.0,
+    "ukupnaCena": 31762.5,
+    "status": "KREIRANA",
+    "kupac": {
+      "kupacID": 1,
+      "ime": "Luka",
+      "prezime": "Kovacevic",
+      "adresa": "Djure Djakovica 32",
+      "poeni": 260,
+      "mesto": {
+        "mestoID": 2,
+        "PTT": 22000,
+        "naziv": "Mesto 2"
+      }
+    },
+    "administrator": {
+      "adminID": 1,
+      "username": "luka",
+      "password": "luka123"
+    }
+  },
+  {
+    "narudzbenicaID": 11,
+    "datum": "Jan 24, 2023, 6:09:46 PM",
+    "popust": 47.0,
+    "ukupnaCena": 8745.0,
+    "status": "KREIRANA",
+    "kupac": {
+      "kupacID": 1,
+      "ime": "Luka",
+      "prezime": "Kovacevic",
+      "adresa": "Djure Djakovica 32",
+      "poeni": 260,
+      "mesto": {
+        "mestoID": 2,
+        "PTT": 22000,
+        "naziv": "Mesto 2"
+      }
+    },
+    "administrator": {
+      "adminID": 1,
+      "username": "luka",
+      "password": "luka123"
+    }
+  },
+  {
+    "narudzbenicaID": 14,
+    "datum": "Sep 5, 2023, 12:36:45 PM",
+    "popust": 49.0,
+    "ukupnaCena": 374.85,
+    "status": "KREIRANA",
+    "kupac": {
+      "kupacID": 1,
+      "ime": "Luka",
+      "prezime": "Kovacevic",
+      "adresa": "Djure Djakovica 32",
+      "poeni": 260,
+      "mesto": {
+        "mestoID": 2,
+        "PTT": 22000,
+        "naziv": "Mesto 2"
+      }
+    },
+    "administrator": {
+      "adminID": 1,
+      "username": "luka",
+      "password": "luka123"
+    }
+  },
+  {
+    "narudzbenicaID": 12,
+    "datum": "Jan 24, 2023, 6:24:22 PM",
+    "popust": 0.0,
+    "ukupnaCena": 1650.0,
+    "status": "KREIRANA",
+    "kupac": {
+      "kupacID": 2,
+      "ime": "Ivan",
+      "prezime": "Ivanovic",
+      "adresa": "Ljubice Stanisavljevic 15",
+      "poeni": 10,
+      "mesto": {
+        "mestoID": 3,
+        "PTT": 33000,
+        "naziv": "Mesto 3"
+      }
+    },
+    "administrator": {
+      "adminID": 1,
+      "username": "luka",
+      "password": "luka123"
+    }
+  },
+  {
+    "narudzbenicaID": 13,
+    "datum": "Jan 24, 2023, 7:03:47 PM",
+    "popust": 0.0,
+    "ukupnaCena": 8250.0,
+    "status": "POSLATA_ROBA",
+    "kupac": {
+      "kupacID": 3,
+      "ime": "Ivica",
+      "prezime": "Jovic",
+      "adresa": "Djure Djakovica 31",
+      "poeni": 10,
+      "mesto": {
+        "mestoID": 2,
+        "PTT": 22000,
+        "naziv": "Mesto 2"
+      }
+    },
+    "administrator": {
+      "adminID": 1,
+      "username": "luka",
+      "password": "luka123"
+    }
+  }
+]

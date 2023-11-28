@@ -58,5 +58,27 @@ class SOUpdateKupacTest {
             assertTrue(validanObjekat instanceof Kupac);
         
     }
+    
+    @Test
+    public void testUspesnoAzuriranjeKupca() throws Exception {
+		
+        k.setIme("Ivana"); 
+
+            soUpdateKupac.execute(k);
+
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+            
+            String jsonString = gson.toJson(k);
+            
+            try (FileWriter writer = new FileWriter("izmenjen_kupac.json")) {
+                writer.write(jsonString);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            
+            assertTrue(soUpdateKupac.isUspesno());
+        
+    }
 
 }

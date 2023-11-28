@@ -82,5 +82,27 @@ class SOGetAllNarudzbenicaTest {
 	            assertTrue(validanObjekat instanceof Narudzbenica);
 	        
 	    }
+	 
+	 @Test
+	    public void testGetAllNarudz() throws SQLException {
+	        
+	        soGetAllNarudz.execute(n);
+
+	        ArrayList<Narudzbenica> lista = soGetAllNarudz.getLista();
+         
+         Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+         
+         String jsonString = gson.toJson(lista);
+         
+         try (FileWriter writer = new FileWriter("narudzbenica.json")) {
+             writer.write(jsonString);
+         } catch (IOException e) {
+             e.printStackTrace();
+         }
+      
+	        assertNotNull(lista);
+	        assertTrue(lista.size() > 0); 
+}
 
 }

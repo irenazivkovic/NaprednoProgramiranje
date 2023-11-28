@@ -1,0 +1,12 @@
+{
+  "kupacID": 2,
+  "ime": "Ivana",
+  "prezime": "Ivanovic",
+  "adresa": "Ljubice Stanisavljevic 15",
+  "poeni": 10,
+  "mesto": {
+    "mestoID": 3,
+    "PTT": 33000,
+    "naziv": "Mesto 3"
+  }
+}
