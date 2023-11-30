@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import domenskeKlase.ApstraktniObjekat;
 import domenskeKlase.Knjiga;
 import domenskeKlase.Kupac;
+import domenskeKlase.Pisac;
 
 class SOUpdateKnjigaTest {
 
@@ -51,7 +52,8 @@ SOUpdateKnjiga soUpdateKnjiga;
 
     @Test
     public void testNeuspesnoAzuriranjeKnjige() {
-    	Knjiga knjiga = new Knjiga(1, "Knjiga 1", "Pisac 1", -10, 1);
+    	Pisac p = new Pisac(1, "Lav", "Tolstoj");
+    	Knjiga knjiga = new Knjiga(1, "Knjiga 1", p, -10, 1);
         
     	try {
             soUpdateKnjiga.validate(knjiga);

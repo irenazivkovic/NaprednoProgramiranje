@@ -1,12 +1,15 @@
 {
   "kupacID": 2,
   "ime": "Ivana",
-  "prezime": "Ivanovic",
-  "adresa": "Ljubice Stanisavljevic 15",
-  "poeni": 10,
+  "prezime": "Zivkovic",
+  "poeni": 0,
   "mesto": {
-    "mestoID": 3,
-    "PTT": 33000,
-    "naziv": "Mesto 3"
+    "mestoID": 1,
+    "PTT": 36210,
+    "naziv": "Vrnjacka Banja",
+    "adresa": {
+      "adresaID": 1,
+      "naziv": "Zicka"
+    }
   }
 }

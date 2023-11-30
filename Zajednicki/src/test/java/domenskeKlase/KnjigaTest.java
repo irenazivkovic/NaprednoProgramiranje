@@ -13,15 +13,18 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 class KnjigaTest {
 
-Knjiga k;
+   Knjiga k;
+   Pisac p;
 	
 	@BeforeEach
 	void setUp() throws Exception {
+		p = new Pisac(1, "Lav", "Tolstoj");
 		k = new Knjiga(); 
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
+		p = null;
 		k = null;
 	}
 	
@@ -29,7 +32,7 @@ Knjiga k;
     public void testKonstruktorSaParametrima() {
         int id = k.getKnjigaID();
         String naslov = k.getNaslov();
-        String pisac = k.getPisac();
+        Pisac pisac = k.getPisac();
         double cena = k.getCena();
         int stanje = k.getStanje();
         
@@ -45,12 +48,10 @@ Knjiga k;
 	@DisplayName ("Test za proveru toString metode")
 	void testToString() {
 		k.setNaslov("Knjiga");
-		k.setPisac("Pisac");
 		
 		String s = k.toString();
 		
 		assertTrue( s.contains("Knjiga") );
-		assertTrue( s.contains("Pisac") );
 	}
 	
 	@Test
@@ -95,9 +96,10 @@ Knjiga k;
     
     @Test
    	void testSetPisacSveOk() {
-   		k.setPisac("Lav Tolstoj");
+   		k.setPisac(p);
    		
-   		assertEquals("Lav Tolstoj", k.getPisac() );
+   		assertEquals("Lav", k.getPisac().getIme() );
+   		assertEquals("Tolstoj", k.getPisac().getPrezime() );
    	}
        
        @Test
@@ -108,11 +110,6 @@ Knjiga k;
    		assertEquals("Pisac ne sme biti null", e.getMessage());
    	}
 
-       @Test
-   	void testSetPisacPrazanString() {
-   		assertThrows(IllegalArgumentException.class,
-   				() -> k.setPisac("")  );
-   	}
        
     @Test
    	void testSetCena() {
@@ -156,4 +153,12 @@ Knjiga k;
 				() -> k.setStanje(stanje));
 	}
 
+	@Test
+	void testSetPisac() {
+		Pisac novPisac = new Pisac(2, "Robert", "Kiosaky");
+		k.setPisac(novPisac);
+		
+		assertEquals(novPisac, k.getPisac());
+	}
+	
 }

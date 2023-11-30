@@ -56,5 +56,9 @@ public interface Operacije_radna_memorija {
      * operacija za izmenu narudzbenice u bazi podataka
      */
     public static final int UPDATE_NARUDZBENICA = 10;
+    /**
+     * operacija za dodavanje pisacaca u bazu podataka
+     */
+    public static final int GET_ALL_PISAC = 11;
 
 }

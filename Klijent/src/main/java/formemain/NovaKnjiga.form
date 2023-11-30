@@ -36,10 +36,10 @@
                       </Group>
                       <EmptySpace min="24" pref="24" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="txtPisac" alignment="0" max="32767" attributes="0"/>
                           <Component id="txtNaslov" alignment="0" max="32767" attributes="0"/>
                           <Component id="txtCena" alignment="0" max="32767" attributes="0"/>
                           <Component id="txtStanje" alignment="0" pref="283" max="32767" attributes="0"/>
+                          <Component id="cmbPisac" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -58,7 +58,7 @@
               <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtPisac" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cmbPisac" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -108,8 +108,6 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtNaslov">
     </Component>
-    <Component class="javax.swing.JTextField" name="txtPisac">
-    </Component>
     <Component class="javax.swing.JFormattedTextField" name="txtCena">
       <Properties>
         <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
@@ -123,6 +121,21 @@
           <Format format="#0" subtype="-1" type="0"/>
         </Property>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cmbPisac">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="Item 1"/>
+            <StringItem index="1" value="Item 2"/>
+            <StringItem index="2" value="Item 3"/>
+            <StringItem index="3" value="Item 4"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value=""/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

@@ -13,6 +13,7 @@ import org.junit.jupiter.api.Test;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import domenskeKlase.Adresa;
 import domenskeKlase.ApstraktniObjekat;
 import domenskeKlase.Knjiga;
 import domenskeKlase.Kupac;
@@ -23,12 +24,14 @@ class SOUpdateKupacTest {
 	SOUpdateKupac soUpdateKupac;
 	Mesto m;
 	Kupac k;
+	Adresa adress;
 	
 	@BeforeEach
 	void setUp() throws Exception {
 		soUpdateKupac = new SOUpdateKupac();
-		m = new Mesto(3,33000,"Mesto 3");
-		k = new Kupac(2, "Ivan", "Ivanovic", "Ljubice Stanisavljevic 15", 10, m);
+		adress = new Adresa(1, "Zicka"); 
+		m = new Mesto(1,36210,"Vrnjacka Banja", adress);
+		k = new Kupac(2, "Irena", "Zivkovic", 0, m);
 	}
 
 	@AfterEach
@@ -36,6 +39,7 @@ class SOUpdateKupacTest {
 		soUpdateKupac = null;
 		m = null;
 		k = null;
+		adress = null;
 	}
 
     @Test

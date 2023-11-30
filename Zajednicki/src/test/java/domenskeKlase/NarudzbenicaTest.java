@@ -20,11 +20,13 @@ class NarudzbenicaTest {
 	Kupac k;
 	Mesto m;
 	Administrator a;
+	Adresa adress;
 	
 	@BeforeEach
 	void setUp() throws Exception {
-		m = new Mesto(1,36210,"Vrnjacka Banja");
-		k = new Kupac(2, "Irena", "Zivkovic", "ZIcka", 0, m);
+		 adress = new Adresa(1, "Zicka 3");
+		m = new Mesto(1,36210,"Vrnjacka Banja",adress);
+		k = new Kupac(2, "Irena", "Zivkovic", 0, m);
 		a = new Administrator(2, "Pera", "Peric");
 		String datumStr = "1990-01-01";
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -45,6 +47,7 @@ class NarudzbenicaTest {
 		k = null;
 		a = null;
 		m = null;
+		adress = null;
 	}
 	
 	@Test
@@ -135,7 +138,7 @@ class NarudzbenicaTest {
 	 
 	 @Test
 		void testSetKupac() {
-			Kupac novKupac = new Kupac(1, "Irena", "Zivkovic", "Zicka", 0, m);
+			Kupac novKupac = new Kupac(1, "Irena", "Zivkovic", 0, m);
 			n.setKupac(novKupac);
 			
 			assertEquals(novKupac, n.getKupac());

@@ -29,7 +29,7 @@ public class ModelTabeleKupci extends AbstractTableModel {
     /**
      * Naziv kolona tabele kao String
      */
-    private String[] kolone = {"Ime i prezime", "Adresa stanovanja", "Mesto", "Poeni za popust"};
+    private String[] kolone = {"Ime i prezime", "Mesto", "Poeni za popust"};
     /**
      * Parametar kao String
      */
@@ -69,10 +69,8 @@ public class ModelTabeleKupci extends AbstractTableModel {
             case 0:
                 return k.toString();
             case 1:
-                return k.getAdresa();
-            case 2:
                 return k.getMesto().getNaziv();
-            case 3:
+            case 2:
                 return k.getPoeni();
             default:
                 return null;

@@ -13,15 +13,18 @@ import org.junit.jupiter.params.provider.CsvSource;
 class MestoTest {
 
 	Mesto m;
+	Adresa a;
 
 	@BeforeEach
 	void setUp() throws Exception {
 		m = new Mesto();
+		a = new Adresa(1, "Zicka 3");
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		m = null;
+		a = null;
 	}
 	
 	@Test
@@ -30,7 +33,7 @@ class MestoTest {
         int ptt = 1100;
         String naziv = "Beograd";
 
-        Mesto m = new Mesto(id,ptt, naziv);
+        Mesto m = new Mesto(id,ptt, naziv,a);
 
         assertEquals(id, m.getMestoID());
         assertEquals(ptt, m.getPTT());
@@ -103,5 +106,21 @@ class MestoTest {
 		assertThrows(IllegalArgumentException.class,
 				() -> m.setNaziv("")  );
 	}
+    
+    @Test
+	void testSetAdresa() {
+		Adresa novaAdresa= new Adresa(2, "Podujevska");
+		m.setAdresa(novaAdresa);
+		
+		assertEquals(novaAdresa, m.getAdresa());
+	}
+	
+	 @Test
+		void testSetAdresaNull() {
+			Exception e = assertThrows(NullPointerException.class,
+					() -> m.setAdresa(null)  );
+			
+			assertEquals("Adresa ne sme biti null", e.getMessage());
+		}
     
 }

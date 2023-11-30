@@ -28,9 +28,9 @@ public class Knjiga extends ApstraktniObjekat implements Serializable {
      */
     private String naslov;
     /**
-     * Pisac knjige kao String
+     * Pisac knjige kao objekat klase Pisac
      */
-    private String pisac;
+    private Pisac pisac;
     /**
      * Cena knjige kao double
      */
@@ -56,7 +56,7 @@ public class Knjiga extends ApstraktniObjekat implements Serializable {
      * @param cena nova vrednost za cenu knjige
      * @param stanje nova vrednost za broj knjiga na stanju
      */
-    public Knjiga(int knjigaID, String naslov, String pisac, double cena, int stanje) {
+    public Knjiga(int knjigaID, String naslov, Pisac pisac, double cena, int stanje) {
         this.knjigaID = knjigaID;
         this.naslov = naslov;
         this.pisac = pisac;
@@ -66,7 +66,7 @@ public class Knjiga extends ApstraktniObjekat implements Serializable {
 
     @Override
     public String toString() {
-        return "[Naslov] " + naslov + " [Pisac] " + pisac;
+        return "[Naslov] " + naslov + " [Pisac] " + pisac.toString();
     }
 
     @Override
@@ -81,14 +81,15 @@ public class Knjiga extends ApstraktniObjekat implements Serializable {
 
     @Override
     public String spajanje() {
-        return "";
+        return "JOIN pisac p on(p.pisacid=k.pisacid)";
     }
 
     @Override
     public ArrayList<ApstraktniObjekat> selectLista(ResultSet rs) throws SQLException {
         ArrayList<ApstraktniObjekat> lista = new ArrayList<>();
         while (rs.next()) {
-            Knjiga k = new Knjiga(rs.getInt("KnjigaID"), rs.getString("Naslov"), rs.getString("Pisac"), rs.getDouble("Cena"), rs.getInt("Stanje"));
+            Pisac p = new Pisac(rs.getInt("PisacID"), rs.getString("Ime"), rs.getString("Prezime"));
+            Knjiga k = new Knjiga(rs.getInt("KnjigaID"), rs.getString("Naslov"), p, rs.getDouble("Cena"), rs.getInt("Stanje"));
             lista.add(k);
         }
         rs.close();
@@ -97,7 +98,7 @@ public class Knjiga extends ApstraktniObjekat implements Serializable {
 
     @Override
     public String koloneZaInsert() {
-        return "(Naslov,Pisac,Cena,Stanje)";
+        return "(Naslov,Cena,Stanje,PisacID)";
     }
 
     @Override
@@ -107,7 +108,7 @@ public class Knjiga extends ApstraktniObjekat implements Serializable {
 
     @Override
     public String vrednostiZaInsert() {
-        return "'" + naslov + "','" + pisac + "'," + cena + "," + stanje;
+        return "'" + naslov + "'," + cena + "," + stanje +"," + pisac.getPisacID();
     }
 
     @Override
@@ -181,27 +182,22 @@ public class Knjiga extends ApstraktniObjekat implements Serializable {
      *
      * @return pisac kao String
      */
-    public String getPisac() {
+    public Pisac getPisac() {
         return pisac;
     }
 
     /**
      * Postavlja vrednost atributa pisac.
      *
-     * Pisac ne sme biti null niti prazan String.
+     * Pisac ne sme biti null vrednost.
      *
-     * @param pisac nova vrednost za naslov knjige
+     * @param pisac nova vrednost za pisca knjige
      *
-     * @throws NullPointerException ako se unese null vrednost za pisac
-     * @throws IllegalArgumentException ako se unese prazan String kao pisac
+     * @throws NullPointerException ako se unese null vrednost za pisaca
      */
-    public void setPisac(String pisac) {
+    public void setPisac(Pisac pisac) {
         if (pisac == null) {
             throw new NullPointerException("Pisac ne sme biti null");
-        }
-
-        if (pisac.isEmpty()) {
-            throw new IllegalArgumentException("Pisac ne sme biti prazan");
         }
 
         this.pisac = pisac;

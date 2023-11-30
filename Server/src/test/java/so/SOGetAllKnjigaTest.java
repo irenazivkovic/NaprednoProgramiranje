@@ -18,21 +18,25 @@ import com.google.gson.GsonBuilder;
 import domenskeKlase.ApstraktniObjekat;
 import domenskeKlase.Knjiga;
 import domenskeKlase.Narudzbenica;
+import domenskeKlase.Pisac;
 
 class SOGetAllKnjigaTest {
 
 	SOGetAllKnjiga soGetAllKnjiga;
 	Knjiga k;
+	Pisac p;
 	
 	@BeforeEach
 	void setUp() throws Exception {
 		soGetAllKnjiga = new SOGetAllKnjiga();
-		k = new Knjiga(); 
+		p = new Pisac(1, "Lav", "Tolstoj");
+		k = new Knjiga(1, "Ana Karenjina", p, 2000, 20); 
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		soGetAllKnjiga = null;
+		p = null;
 		k = null;
 	}
 
@@ -62,7 +66,8 @@ class SOGetAllKnjigaTest {
        // Knjiga k = new Knjiga(5, "Ana Karenjina", "Lav Tolstoj", 1000, 30); 
         
 		k.setNaslov("Knjiga");
-		k.setPisac("Pisac");
+	
+		k.setPisac(p);
 		
             soGetAllKnjiga.execute(k);
             List<Knjiga> lista = soGetAllKnjiga.getLista();

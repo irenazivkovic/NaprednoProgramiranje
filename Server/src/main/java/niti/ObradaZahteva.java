@@ -10,6 +10,7 @@ import domenskeKlase.Knjiga;
 import domenskeKlase.Kupac;
 import domenskeKlase.Mesto;
 import domenskeKlase.Narudzbenica;
+import domenskeKlase.Pisac;
 import serverkontroler.ServerKontroler;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -139,6 +140,10 @@ public class ObradaZahteva extends Thread {
                     boolean uespesno6 = ServerKontroler.getInstance().updateNarudzbenica((Narudzbenica) req.getData());
                     res.setData(uespesno6);
                     break;
+                case Operacije_radna_memorija.GET_ALL_PISAC:
+                    ArrayList<Pisac> pisci = ServerKontroler.getInstance().getAllPisci();
+                    res.setData(pisci);
+                    break; 
                 default:
                     return null;
             }

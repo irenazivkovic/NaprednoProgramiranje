@@ -43,13 +43,11 @@ public class NoviKupac extends javax.swing.JDialog {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         txtIme = new javax.swing.JTextField();
         txtPrezime = new javax.swing.JTextField();
-        txtAdresa = new javax.swing.JTextField();
         txtPoeni = new javax.swing.JFormattedTextField();
         cmbMest = new javax.swing.JComboBox();
 
@@ -58,8 +56,6 @@ public class NoviKupac extends javax.swing.JDialog {
         jLabel1.setText("Ime:");
 
         jLabel2.setText("Prezime:");
-
-        jLabel3.setText("Adresa:");
 
         jLabel4.setText("Poeni:");
 
@@ -86,17 +82,15 @@ public class NoviKupac extends javax.swing.JDialog {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2)
-                            .addComponent(jLabel3)
                             .addComponent(jLabel4)
                             .addComponent(jLabel5))
                         .addGap(26, 26, 26)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtIme)
                             .addComponent(txtPrezime)
-                            .addComponent(txtAdresa)
                             .addComponent(txtPoeni)
                             .addComponent(cmbMest, 0, 230, Short.MAX_VALUE))))
-                .addContainerGap(82, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -111,17 +105,13 @@ public class NoviKupac extends javax.swing.JDialog {
                     .addComponent(txtPrezime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtAdresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txtPoeni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(cmbMest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(17, 17, 17))
         );
@@ -139,15 +129,14 @@ public class NoviKupac extends javax.swing.JDialog {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         try {
-            if (txtAdresa.getText().isEmpty()
-                    || txtIme.getText().isEmpty()
+            if (txtIme.getText().isEmpty()
                     || txtPoeni.getText().isEmpty()
                     || txtPrezime.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Sva polja su obavezna!");
                 return;
             }
 
-            Kupac k = new Kupac(-1, txtIme.getText(), txtPrezime.getText(), txtAdresa.getText(), Integer.parseInt(txtPoeni.getText()), (Mesto) cmbMest.getSelectedItem());
+            Kupac k = new Kupac(-1, txtIme.getText(), txtPrezime.getText(), Integer.parseInt(txtPoeni.getText()), (Mesto) cmbMest.getSelectedItem());
 
             boolean uspesno = KlijentKontroler.getInstance().addKupac(k);
             if (uspesno) {
@@ -211,10 +200,8 @@ public class NoviKupac extends javax.swing.JDialog {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JTextField txtAdresa;
     private javax.swing.JTextField txtIme;
     private javax.swing.JFormattedTextField txtPoeni;
     private javax.swing.JTextField txtPrezime;

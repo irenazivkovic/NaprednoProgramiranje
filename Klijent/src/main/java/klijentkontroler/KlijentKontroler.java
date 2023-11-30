@@ -10,6 +10,7 @@ import domenskeKlase.Knjiga;
 import domenskeKlase.Kupac;
 import domenskeKlase.Mesto;
 import domenskeKlase.Narudzbenica;
+import domenskeKlase.Pisac;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
@@ -175,6 +176,10 @@ public class KlijentKontroler {
      */
     public boolean updateNarudzbenica(Narudzbenica n) throws Exception {
         return (boolean) sendRequest(Operacije_radna_memorija.UPDATE_NARUDZBENICA, n);
+    }
+
+    public ArrayList<Pisac> getAllPisac() throws Exception  {
+        return (ArrayList<Pisac>) sendRequest(Operacije_radna_memorija.GET_ALL_PISAC, null);
     }
 
 }

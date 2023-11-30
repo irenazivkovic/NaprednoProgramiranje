@@ -96,9 +96,11 @@ public class Stavka extends ApstraktniObjekat implements Serializable {
         ArrayList<ApstraktniObjekat> lista = new ArrayList<>();
         while (rs.next()) {
             Administrator a = new Administrator(rs.getInt("AdminID"), rs.getString("Username"), rs.getString("Password"));
-            Knjiga k = new Knjiga(rs.getInt("KnjigaID"), rs.getString("Naslov"), rs.getString("Pisac"), rs.getDouble("Cena"), rs.getInt("Stanje"));
-            Mesto m = new Mesto(rs.getInt("MestoID"), rs.getInt("PTT"), rs.getString("Naziv"));
-            Kupac ku = new Kupac(rs.getInt("KupacID"), rs.getString("Ime"), rs.getString("Prezime"), rs.getString("Adresa"), rs.getInt("Poeni"), m);
+            Adresa adress = new Adresa(rs.getInt("AdresaID"), rs.getString("Naziv"));
+            Pisac p = new Pisac(rs.getInt("PisacID"), rs.getString("Ime"), rs.getString("Prezime"));
+            Knjiga k = new Knjiga(rs.getInt("KnjigaID"), rs.getString("Naslov"), p, rs.getDouble("Cena"), rs.getInt("Stanje"));
+            Mesto m = new Mesto(rs.getInt("MestoID"), rs.getInt("PTT"), rs.getString("Naziv"), adress);
+            Kupac ku = new Kupac(rs.getInt("KupacID"), rs.getString("Ime"), rs.getString("Prezime"), rs.getInt("Poeni"), m);
             Narudzbenica n = new Narudzbenica(rs.getInt("NarudzbenicaID"), rs.getTimestamp("Datum"), rs.getDouble("Popust"), rs.getDouble("UkupnaCena"), Status.valueOf(rs.getString("Status")), ku, null, a);
             Stavka s = new Stavka(n, k, rs.getInt("RedniBroj"), rs.getInt("Kolicina"), rs.getDouble("CenaKom"), rs.getDouble("PDV"));
             lista.add(s);

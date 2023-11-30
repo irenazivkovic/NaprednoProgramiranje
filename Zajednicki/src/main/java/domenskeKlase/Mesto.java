@@ -32,6 +32,11 @@ public class Mesto extends ApstraktniObjekat implements Serializable {
     private String naziv;
 
     /**
+     * Adresa mesta kao objekat klase Adresa
+     */
+    private Adresa adresa;
+    
+    /**
      * Bezparametarski konstruktor
      */
     public Mesto() {
@@ -43,14 +48,40 @@ public class Mesto extends ApstraktniObjekat implements Serializable {
      * @param mestoID nova vrednost za id mesta
      * @param PTT nova vrednost za ptt mesta
      * @param naziv nova vrednost za naziv mesta
+     * @param adresa nova vrednost za adresu mesta
      */
-    public Mesto(int mestoID, int PTT, String naziv) {
-        this.mestoID = mestoID;
-        this.PTT = PTT;
-        this.naziv = naziv;
-    }
+    public Mesto(int mestoID, int PTT, String naziv, Adresa adresa) {
+		this.mestoID = mestoID;
+		this.PTT = PTT;
+		this.naziv = naziv;
+		this.adresa = adresa;
+	}
 
-    @Override
+    /**
+     * Vraca adresu mesta
+     * @return adresa kao objekat klase Adresa
+     */
+	public Adresa getAdresa() {
+		return adresa;
+	}
+
+	/**
+     * Postavlja vrednost atributa adresa.
+     *
+     * Adresa ne sme biti null.
+     *
+     * @param adresa nova vrednost za adresu stanovanja
+     *
+     * @throws NullPointerException ako se unese null vrednost za adresu
+     */
+	public void setAdresa(Adresa adresa) {
+		if (adresa == null) {
+            throw new NullPointerException("Adresa ne sme biti null");
+        }
+		this.adresa = adresa;
+	}
+
+	@Override
     public String toString() {
         return naziv;
     }
@@ -67,7 +98,7 @@ public class Mesto extends ApstraktniObjekat implements Serializable {
 
     @Override
     public String spajanje() {
-        return "";
+        return " join adresa adress on (m.adresaid = adress.adresaid)";
     }
 
     @Override
@@ -75,7 +106,8 @@ public class Mesto extends ApstraktniObjekat implements Serializable {
 
         ArrayList<ApstraktniObjekat> lista = new ArrayList<>();
         while (rs.next()) {
-            Mesto m = new Mesto(rs.getInt("MestoID"), rs.getInt("PTT"), rs.getString("Naziv"));
+        	Adresa a = new Adresa(rs.getInt("AdresaID"), rs.getString("Naziv"));
+            Mesto m = new Mesto(rs.getInt("MestoID"), rs.getInt("PTT"), rs.getString("Naziv"), a);
             lista.add(m);
         }
         rs.close();

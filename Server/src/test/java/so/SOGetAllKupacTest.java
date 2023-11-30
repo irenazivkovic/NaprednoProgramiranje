@@ -16,6 +16,7 @@ import org.junit.jupiter.api.Test;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import domenskeKlase.Adresa;
 import domenskeKlase.ApstraktniObjekat;
 import domenskeKlase.Kupac;
 import domenskeKlase.Mesto;
@@ -25,16 +26,22 @@ class SOGetAllKupacTest {
 
 	SOGetAllKupac soGetAllKupac;
 	Kupac k;
+	Mesto m;
+	Adresa a;
 	
 	@BeforeEach
 	void setUp() throws Exception {
 		soGetAllKupac = new SOGetAllKupac();
+		a = new Adresa(1, "Zicka");
+		m = new Mesto(1,36210,"Vrnjacka Banja",a);
 		k = new Kupac(); 
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		soGetAllKupac = null;
+		a=null;
+		m=null;
 		k = null;
 	}
 
@@ -66,7 +73,9 @@ class SOGetAllKupacTest {
 	        mesto.setNaziv("Beograd"); 
 	        
 	        k.setIme("John Doe"); 
+	        m.setAdresa(a);
 	        k.setMesto(mesto);
+	        
 
 	        soGetAllKupac.execute(k);
 	        

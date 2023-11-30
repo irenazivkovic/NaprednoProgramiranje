@@ -10,6 +10,7 @@ import domenskeKlase.Knjiga;
 import domenskeKlase.Kupac;
 import domenskeKlase.Mesto;
 import domenskeKlase.Narudzbenica;
+import domenskeKlase.Pisac;
 import java.util.ArrayList;
 import so.ApstraktnaSO;
 import so.SOAddKnjiga;
@@ -19,6 +20,7 @@ import so.SOGetAllKnjiga;
 import so.SOGetAllKupac;
 import so.SOGetAllMesto;
 import so.SOGetAllNarudzbenica;
+import so.SOGetAllPisac;
 import so.SOLogin;
 import so.SOUpdateKnjiga;
 import so.SOUpdateKupac;
@@ -195,6 +197,12 @@ public class ServerKontroler {
         SOUpdateNarudzbenica so = new SOUpdateNarudzbenica();
         so.templateExecute(narudzbenica);
         return so.isUspesno();
+    }
+
+    public ArrayList<Pisac> getAllPisci() throws Exception {
+        SOGetAllPisac so = new SOGetAllPisac();
+        so.templateExecute(new Pisac());
+        return so.getLista();
     }
 
 }

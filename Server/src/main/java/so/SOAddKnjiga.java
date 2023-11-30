@@ -45,7 +45,7 @@ public class SOAddKnjiga extends ApstraktnaSO {
         ArrayList<Knjiga> lista = (ArrayList<Knjiga>) (ArrayList<?>) knjige;
 
         for (Knjiga knjiga : lista) {
-            if (knjiga.getPisac().equals(k.getPisac()) && knjiga.getNaslov().equals(k.getNaslov())) {
+            if (knjiga.getNaslov().equals(k.getNaslov())) {
                 throw new Exception("Knjiga sa ovim piscem vec postoji u bazi!");
             }
         }

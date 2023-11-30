@@ -31,10 +31,6 @@ public class Kupac extends ApstraktniObjekat implements Serializable {
      */
     private String prezime;
     /**
-     * Adresa autora kao String
-     */
-    private String adresa;
-    /**
      * Broj poena koje je kupac sakupio.
      */
     private int poeni;
@@ -56,15 +52,13 @@ public class Kupac extends ApstraktniObjekat implements Serializable {
      * @param kupacID nova vrednost za id kupca
      * @param ime nova vrednost za ime kupca
      * @param prezime nova vrednost za prezime kupca
-     * @param adresa nova vrednost za adresu kupca
      * @param poeni nova vrednost za poene koje je kupac osvojio
      * @param mesto nova vrednost za mesto gde kupac zivi
      */
-    public Kupac(int kupacID, String ime, String prezime, String adresa, int poeni, Mesto mesto) {
+    public Kupac(int kupacID, String ime, String prezime, int poeni, Mesto mesto) {
         this.kupacID = kupacID;
         this.ime = ime;
         this.prezime = prezime;
-        this.adresa = adresa;
         this.poeni = poeni;
         this.mesto = mesto;
     }
@@ -94,8 +88,9 @@ public class Kupac extends ApstraktniObjekat implements Serializable {
 
         ArrayList<ApstraktniObjekat> lista = new ArrayList<>();
         while (rs.next()) {
-            Mesto m = new Mesto(rs.getInt("MestoID"), rs.getInt("PTT"), rs.getString("Naziv"));
-            Kupac k = new Kupac(rs.getInt("KupacID"), rs.getString("Ime"), rs.getString("Prezime"), rs.getString("Adresa"), rs.getInt("Poeni"), m);
+        	Adresa a = new Adresa(rs.getInt("AdresaID"), rs.getString("Naziv"));
+            Mesto m = new Mesto(rs.getInt("MestoID"), rs.getInt("PTT"), rs.getString("Naziv"), a);
+            Kupac k = new Kupac(rs.getInt("KupacID"), rs.getString("Ime"), rs.getString("Prezime"), rs.getInt("Poeni"), m);
             lista.add(k);
         }
         rs.close();
@@ -104,7 +99,7 @@ public class Kupac extends ApstraktniObjekat implements Serializable {
 
     @Override
     public String koloneZaInsert() {
-        return "(Ime,Prezime,Adresa,Poeni,MestoID)";
+        return "(Ime,Prezime,Poeni,MestoID)";
     }
 
     @Override
@@ -114,12 +109,12 @@ public class Kupac extends ApstraktniObjekat implements Serializable {
 
     @Override
     public String vrednostiZaInsert() {
-        return "'" + ime + "','" + prezime + "','" + adresa + "'," + poeni + "," + mesto.getMestoID();
+        return "'" + ime + "','" + prezime + "'," + poeni + "," + mesto.getMestoID();
     }
 
     @Override
     public String vrednostiZaUpdate() {
-        return "Adresa='" + adresa + "',Poeni=" + poeni + ",MestoID=" + mesto.getMestoID();
+        return "Poeni=" + poeni + ",MestoID=" + mesto.getMestoID();
     }
 
     @Override
@@ -213,38 +208,7 @@ public class Kupac extends ApstraktniObjekat implements Serializable {
 
         this.prezime = prezime;
     }
-
-    /**
-     * Vraca adresu kupca
-     *
-     * @return adresa kao String
-     */
-    public String getAdresa() {
-        return adresa;
-    }
-
-    /**
-     * Postavlja vrednost atributa adresa.
-     *
-     * Adresa ne sme biti null vrednost, niti prazan String.
-     *
-     * @param adresa nova vrednost za adresu
-     *
-     * @throws NullPointerException ako se unese null vrednost za adresa
-     * @throws IllegalArgumentException ako se unese prazan String kao adresa
-     */
-    public void setAdresa(String adresa) {
-        if (adresa == null) {
-            throw new NullPointerException("Adresa ne sme biti null");
-        }
-
-        if (adresa.isEmpty()) {
-            throw new IllegalArgumentException("Adresa ne sme biti prazan");
-        }
-
-        this.adresa = adresa;
-    }
-
+    
     /**
      * Vraca poene koje je kupac ostvario
      *

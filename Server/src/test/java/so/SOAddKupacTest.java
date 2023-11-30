@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import domenskeKlase.Administrator;
+import domenskeKlase.Adresa;
 import domenskeKlase.ApstraktniObjekat;
 import domenskeKlase.Kupac;
 import domenskeKlase.Mesto;
@@ -17,28 +18,23 @@ class SOAddKupacTest {
 	private SOAddKupac soAddKupac;
 	ApstraktniObjekat k;
 	Mesto m;
+	Adresa adress;
 	
 	@BeforeEach
 	void setUp() throws Exception {
 		soAddKupac = new SOAddKupac();
-		m = new Mesto(1,36210,"Vrnjacka Banja");
-		k = new Kupac(2, "Irena", "Zivkovic", "ZIcka", 0, m);
+		adress = new Adresa(1, "Zicka"); 
+		m = new Mesto(1,36210,"Vrnjacka Banja", adress);
+		k = new Kupac(2, "Irena", "Zivkovic", 0, m);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		soAddKupac = null;
+		adress = null; 
 		m = null;
 		k = null;
 	}
-
-	@Test
-    public void testUspesnoDodavanjeKupca() throws Exception {
-        
-        soAddKupac.execute(k);
-        assertTrue(soAddKupac.isUspesno());
-        
-    }
 
     @Test
     public void testNevalidanObjekat() {
@@ -58,6 +54,15 @@ class SOAddKupacTest {
             soAddKupac.validate(validanObjekat);
           
             assertTrue(validanObjekat instanceof Kupac);
+        
+    }
+    
+    
+    @Test
+    public void testUspesnoDodavanjeKupca() throws Exception {
+        
+        soAddKupac.execute(k);
+        assertTrue(soAddKupac.isUspesno());
         
     }
 

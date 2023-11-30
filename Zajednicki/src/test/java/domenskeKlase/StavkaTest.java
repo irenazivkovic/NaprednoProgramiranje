@@ -18,6 +18,8 @@ class StavkaTest {
 	Kupac kup;
 	Administrator a;
 	Mesto m;
+	Adresa adress;
+	Pisac p;
 	
 	
 	@BeforeEach
@@ -26,12 +28,14 @@ class StavkaTest {
 		int kolicina = 5;
 		double cenaKom = 500;
 		double pdv = 25;
-		m = new Mesto(1,36210,"Vrnjacka Banja");
-		kup = new Kupac(2, "Irena", "Zivkovic", "ZIcka", 0, m);
+		 adress = new Adresa(1, "Zicka 3");
+		m = new Mesto(1,36210,"Vrnjacka Banja",adress);
+		kup = new Kupac(2, "Irena", "Zivkovic", 0, m);
 		a = new Administrator(2, "Pera", "Peric");
 		n = new Narudzbenica(1, new Date(), 2, 1200, 
 				Status.KREIRANA, kup, null, a);
-		k = new Knjiga(1, "Ana Karenjina", "Lav Tolstoj", 1000, 30);
+		p = new Pisac(1, "Lav", "Tolstoj");
+		k = new Knjiga(1, "Ana Karenjina",p, 1000, 30);
 		
 		s = new Stavka(n, k, redniBorj, kolicina, cenaKom, pdv);
 	}
@@ -44,6 +48,8 @@ class StavkaTest {
 		a = null;
 		n = null;
 		k = null;
+		adress = null;
+		p = null;
 	}
 
 	@Test
@@ -66,7 +72,7 @@ class StavkaTest {
 
 	@Test
 	void testSetNarudzbenicaOk() {
-		Kupac kup1 = new Kupac(2, "Irena", "Zivkovic", "ZIcka", 0, m);
+		Kupac kup1 = new Kupac(2, "Irena", "Zivkovic", 0, m);
 		Administrator a1 = new Administrator(2, "Pera", "Peric");
 		Narudzbenica n1 = new Narudzbenica(1, new Date(), 2, 1200, 
 				Status.KREIRANA, kup1, null, a1);
@@ -85,7 +91,7 @@ class StavkaTest {
     
     @Test
 	void testSetKnjigaOk() {
-		Knjiga novaKnjiga = new Knjiga(1, "Ana Karenjina", "Lav Tolstoj", 1000, 30);
+		Knjiga novaKnjiga = new Knjiga(1, "Ana Karenjina",p, 1000, 30);
 		s.setKnjiga(novaKnjiga);
 		
 		assertEquals(novaKnjiga, s.getKnjiga());
@@ -107,6 +113,7 @@ class StavkaTest {
 
         assertEquals(rb, s.getRedniBroj());
     }
+    
     
     @Test
     void setNegativanRb() {

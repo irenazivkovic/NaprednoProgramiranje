@@ -106,8 +106,7 @@ public class ModelTabeleKnjige extends AbstractTableModel {
             if (!parametar.equals("")) {
                 ArrayList<Knjiga> novaLista = new ArrayList<>();
                 for (Knjiga knjiga : lista) {
-                    if (knjiga.getNaslov().toLowerCase().contains(parametar.toLowerCase())
-                            || knjiga.getPisac().toLowerCase().contains(parametar.toLowerCase())) {
+                    if (knjiga.getNaslov().toLowerCase().contains(parametar.toLowerCase())) {
                         novaLista.add(knjiga);
                     }
                 }

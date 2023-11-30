@@ -2,29 +2,34 @@
   {
     "knjigaID": 1,
     "naslov": "Knjiga 1",
-    "pisac": "Pisac 1",
+    "pisac": {
+      "pisacID": 2,
+      "ime": "Robert",
+      "prezime": "Kiosaki"
+    },
     "cena": 150.0,
     "stanje": 40
   },
   {
     "knjigaID": 2,
     "naslov": "Knjiga 2",
-    "pisac": "Pisac 1",
+    "pisac": {
+      "pisacID": 1,
+      "ime": "Lav",
+      "prezime": "Tolstoj"
+    },
     "cena": 150.0,
     "stanje": 135
   },
   {
     "knjigaID": 3,
     "naslov": "Romeo i Julija",
-    "pisac": "Sekspir",
+    "pisac": {
+      "pisacID": 1,
+      "ime": "Lav",
+      "prezime": "Tolstoj"
+    },
     "cena": 350.0,
     "stanje": 150
-  },
-  {
-    "knjigaID": 4,
-    "naslov": "Titanik",
-    "pisac": "James Cameron",
-    "cena": 700.0,
-    "stanje": 149
   }
 ]

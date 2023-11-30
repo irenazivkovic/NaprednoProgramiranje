@@ -138,8 +138,9 @@ public class Narudzbenica extends ApstraktniObjekat implements Serializable {
         ArrayList<ApstraktniObjekat> lista = new ArrayList<>();
         while (rs.next()) {
             Administrator a = new Administrator(rs.getInt("AdminID"), rs.getString("Username"), rs.getString("Password"));
-            Mesto m = new Mesto(rs.getInt("MestoID"), rs.getInt("PTT"), rs.getString("Naziv"));
-            Kupac k = new Kupac(rs.getInt("KupacID"), rs.getString("Ime"), rs.getString("Prezime"), rs.getString("Adresa"), rs.getInt("Poeni"), m);
+            Adresa adress = new Adresa(rs.getInt("AdresaID"), rs.getString("Naziv"));
+            Mesto m = new Mesto(rs.getInt("MestoID"), rs.getInt("PTT"), rs.getString("Naziv"), adress);
+            Kupac k = new Kupac(rs.getInt("KupacID"), rs.getString("Ime"), rs.getString("Prezime"), rs.getInt("Poeni"), m);
             Narudzbenica n = new Narudzbenica(rs.getInt("NarudzbenicaID"), rs.getTimestamp("Datum"), rs.getDouble("Popust"), rs.getDouble("UkupnaCena"), Status.valueOf(rs.getString("Status")), k, null, a);
             lista.add(n);
         }

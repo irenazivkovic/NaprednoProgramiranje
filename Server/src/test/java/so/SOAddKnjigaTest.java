@@ -14,23 +14,28 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import domenskeKlase.Administrator;
+import domenskeKlase.Adresa;
 import domenskeKlase.ApstraktniObjekat;
 import domenskeKlase.Knjiga;
+import domenskeKlase.Pisac;
 
 class SOAddKnjigaTest {
 
 	private SOAddKnjiga soAddKnjiga;
-	ApstraktniObjekat k;
+	Knjiga k;
+	Pisac p;
 	
 	@BeforeEach
 	void setUp() throws Exception {
 		soAddKnjiga = new SOAddKnjiga();
-		k = new Knjiga();
+        p = new Pisac(1, "Lav", "Tolstoj");
+		k = new Knjiga(5, "Ana Karenjina", p, 1200, 2);
 	}
 	
 	@AfterEach
 	void tearDown() throws Exception {
 		soAddKnjiga = null;
+		p = null;
 		k = null;
 	}
 
@@ -48,7 +53,8 @@ class SOAddKnjigaTest {
 
 	@Test
     public void testCenaIStanjeManjiIliJednakoNula() {
-        Knjiga knjiga = new Knjiga(1, "Knjiga 1", "Pisac 1", 0, -1);
+        Pisac pisac = new Pisac(1, "Ana", "Zivkovic");
+        Knjiga knjiga = new Knjiga(1, "Knjiga 1", pisac, 0, -1);
 
         try {
             soAddKnjiga.validate(knjiga);
@@ -57,15 +63,13 @@ class SOAddKnjigaTest {
         }
     }
 	
+	
 	@Test
 	public void testExecute() throws Exception {
 
-        Knjiga knjiga = new Knjiga();
-        knjiga.setKnjigaID(5);
-        knjiga.setNaslov("Ana Karenjina");
-        knjiga.setPisac("Lav Tolstoj");
-        knjiga.setCena(50); 
-        
+
+        Pisac novP = new Pisac(2, "Lav", "Tolstoj");
+        Knjiga knjiga = new Knjiga(5, "Ana Karenjina", novP, 1200, 2);
         
         soAddKnjiga.execute(knjiga);
         
@@ -94,7 +98,7 @@ class SOAddKnjigaTest {
         ArrayList<ApstraktniObjekat> knjigeUBazi = new ArrayList<>();
         
         Knjiga postojecaKnjiga = new Knjiga();
-        postojecaKnjiga.setPisac("Autor");
+        postojecaKnjiga.setPisac(p);
         postojecaKnjiga.setNaslov("Naslov");
         knjigeUBazi.add(postojecaKnjiga);
 

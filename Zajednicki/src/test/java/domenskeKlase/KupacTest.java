@@ -15,17 +15,18 @@ class KupacTest {
 
 	 Kupac k;
 	 Mesto m;
+	 Adresa adress;
 	 
 	@BeforeEach
 	void setUp() throws Exception {
 		int id = 1;
         String ime = "Irena";
         String prezime = "Zivkovic";
-        String adresa = "Madridska";
         int poeni = 2;
-		m = new Mesto(1,36210,"Vrnjacka Banja");
+        adress = new Adresa(1, "Zicka 3");
+		m = new Mesto(1,36210,"Vrnjacka Banja", adress);
 		
-		k = new Kupac(id, ime, prezime, adresa, poeni, m);
+		k = new Kupac(id, ime, prezime, poeni, m);
 	}
 
 	@AfterEach
@@ -40,7 +41,6 @@ class KupacTest {
         int id = k.getKupacID();
         String ime = k.getIme();
         String prezime = k.getPrezime();
-        String adresa = k.getAdresa();
         int poeni = k.getPoeni();
         Mesto m = k.getMesto();
         
@@ -48,7 +48,6 @@ class KupacTest {
         Assertions.assertEquals(id, k.getKupacID());
         Assertions.assertEquals(ime, k.getIme());
         Assertions.assertEquals(prezime, k.getPrezime());
-        Assertions.assertEquals(adresa, k.getAdresa());
         Assertions.assertEquals(poeni, k.getPoeni());
         Assertions.assertEquals(m, k.getMesto());
     }
@@ -112,7 +111,7 @@ class KupacTest {
    		assertEquals("Zivkovic", k.getPrezime() );
    	}
        
-       @Test
+    @Test
    	void testSetPrezimeNull() {
    		Exception e = assertThrows(NullPointerException.class,
    				() -> k.setPrezime(null)  );
@@ -125,27 +124,6 @@ class KupacTest {
    		assertThrows(IllegalArgumentException.class,
    				() -> k.setPrezime("")  );
    	}
-       
-       @Test
-      	void testSetAdresaSveOk() {
-      		k.setAdresa("Zicka");
-      		
-      		assertEquals("Zicka", k.getAdresa() );
-      	}
-          
-          @Test
-      	void testSetAdresaNull() {
-      		Exception e = assertThrows(NullPointerException.class,
-      				() -> k.setAdresa(null)  );
-      		
-      		assertEquals("Adresa ne sme biti null", e.getMessage());
-      	}
-
-          @Test
-      	void testSetAdresaPrazanString() {
-      		assertThrows(IllegalArgumentException.class,
-      				() -> k.setAdresa("")  );
-      	}
              
        
     @Test
@@ -186,4 +164,5 @@ class KupacTest {
   		assertEquals("Mesto ne sme biti null", e.getMessage());
   	}
    	
+      
 }

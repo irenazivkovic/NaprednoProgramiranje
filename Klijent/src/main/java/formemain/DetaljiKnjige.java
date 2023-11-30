@@ -5,6 +5,9 @@
 package formemain;
 
 import domenskeKlase.Knjiga;
+import domenskeKlase.Mesto;
+import domenskeKlase.Pisac;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JDialog;
@@ -33,6 +36,7 @@ public class DetaljiKnjige extends javax.swing.JDialog {
         setTitle("Detalji knjige");
         this.k = k;
         srediFormu();
+        popuniPisce();
     }
 
     /**
@@ -50,9 +54,9 @@ public class DetaljiKnjige extends javax.swing.JDialog {
         jLabel4 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         txtNaslov = new javax.swing.JTextField();
-        txtPisac = new javax.swing.JTextField();
         txtCena = new javax.swing.JFormattedTextField();
         txtStanje = new javax.swing.JFormattedTextField();
+        cmbPisac = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -75,6 +79,8 @@ public class DetaljiKnjige extends javax.swing.JDialog {
 
         txtStanje.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
 
+        cmbPisac.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -91,10 +97,10 @@ public class DetaljiKnjige extends javax.swing.JDialog {
                             .addComponent(jLabel4))
                         .addGap(24, 24, 24)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtPisac)
                             .addComponent(txtNaslov)
                             .addComponent(txtCena)
-                            .addComponent(txtStanje, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE))))
+                            .addComponent(txtStanje, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
+                            .addComponent(cmbPisac, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(39, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -107,7 +113,7 @@ public class DetaljiKnjige extends javax.swing.JDialog {
                 .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtPisac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbPisac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -129,7 +135,6 @@ public class DetaljiKnjige extends javax.swing.JDialog {
         try {
             if (txtCena.getText().isEmpty()
                     || txtNaslov.getText().isEmpty()
-                    || txtPisac.getText().isEmpty()
                     || txtStanje.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Sva polja su obavezna!");
                 return;
@@ -187,6 +192,7 @@ public class DetaljiKnjige extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox cmbPisac;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -194,7 +200,6 @@ public class DetaljiKnjige extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JFormattedTextField txtCena;
     private javax.swing.JTextField txtNaslov;
-    private javax.swing.JTextField txtPisac;
     private javax.swing.JFormattedTextField txtStanje;
     // End of variables declaration//GEN-END:variables
 
@@ -204,9 +209,22 @@ public class DetaljiKnjige extends javax.swing.JDialog {
     private void srediFormu() {
         txtCena.setText(k.getCena() + "");
         txtNaslov.setText(k.getNaslov());
-        txtPisac.setText(k.getPisac());
+        cmbPisac.getModel().setSelectedItem(k.getPisac());
         txtStanje.setText(k.getStanje() + "");
         txtNaslov.setEnabled(false);
-        txtPisac.setEnabled(false);
+        cmbPisac.setEnabled(false);
+    }
+
+    private void popuniPisce() {
+        try {
+            cmbPisac.removeAllItems();
+            ArrayList<Pisac> pisci = KlijentKontroler.getInstance().getAllPisac();
+            for (Pisac pisac : pisci) {
+                cmbPisac.addItem(pisac);
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(DetaljiKupca.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

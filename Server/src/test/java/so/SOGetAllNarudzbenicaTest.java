@@ -19,6 +19,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import domenskeKlase.Administrator;
+import domenskeKlase.Adresa;
 import domenskeKlase.ApstraktniObjekat;
 import domenskeKlase.Knjiga;
 import domenskeKlase.Kupac;
@@ -31,14 +32,16 @@ class SOGetAllNarudzbenicaTest {
 	private SOGetAllNarudzbenica soGetAllNarudz;
 	Narudzbenica n;
 	Kupac k;
+	Adresa adress;
 	Mesto m;
 	Administrator a;
 	
 	@BeforeEach
 	void setUp() throws Exception {
 		soGetAllNarudz = new SOGetAllNarudzbenica();
-		m = new Mesto(1,36210,"Vrnjacka Banja");
-		k = new Kupac(2, "Irena", "Zivkovic", "ZIcka", 0, m);
+		adress = new Adresa(1, "Zicka"); 
+		m = new Mesto(1,36210,"Vrnjacka Banja", adress);
+		k = new Kupac(2, "Irena", "Zivkovic", 0, m);
 		a = new Administrator(2, "Pera", "Peric");
 		String datumStr = "1990-01-01";
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");

@@ -1,7 +1,11 @@
 {
   "knjigaID": 5,
   "naslov": "Ana Karenjina",
-  "pisac": "Lav Tolstoj",
-  "cena": 50.0,
-  "stanje": 0
+  "pisac": {
+    "pisacID": 2,
+    "ime": "Lav",
+    "prezime": "Tolstoj"
+  },
+  "cena": 1200.0,
+  "stanje": 2
 }
