@@ -48,7 +48,8 @@ class KnjigaTest {
 	@DisplayName ("Test za proveru toString metode")
 	void testToString() {
 		k.setNaslov("Knjiga");
-		
+		k.setPisac(p);
+                
 		String s = k.toString();
 		
 		assertTrue( s.contains("Knjiga") );
